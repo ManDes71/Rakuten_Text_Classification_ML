@@ -3,6 +3,8 @@
 lien Binder :
 https://mybinder.org/v2/gh/ManDes71/Rakuten_Text_Classification_ML/HEAD
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ManDes71/Rakuten_Text_Classification_ML/HEAD)
+
 ```python
 import pandas as pd
 import numpy as np
