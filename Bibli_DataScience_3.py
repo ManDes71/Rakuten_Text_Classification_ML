@@ -74,8 +74,8 @@ REPORT_40_VALACC = get_RACINE_DOSSIER() + 'df_report_val_acc_40.csv'
 REPORT_40_PRED = get_RACINE_DOSSIER() + 'df_report_predict_40.csv'
 
 
-import tensorflow as tf
-from tensorflow.keras.utils import to_categorical
+
+#from tensorflow.keras.utils import to_categorical
 
         
 
