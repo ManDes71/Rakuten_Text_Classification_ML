@@ -40,8 +40,8 @@ from datetime import datetime
 
 
 
-import tensorflow as tf
-from tensorflow.keras.utils import to_categorical
+#import tensorflow as tf
+#from tensorflow.keras.utils import to_categorical
 
 import Bibli_DataScience_3 as ds
 
