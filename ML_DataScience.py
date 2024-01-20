@@ -3,11 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-#from sklearn.model_selection import train_test_split
-#from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split
+from sklearn.utils import shuffle
 #from imblearn.under_sampling import RandomUnderSampler
 #from imblearn.over_sampling import RandomOverSampler
-#from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder
 
 from nltk.tokenize import PunktSentenceTokenizer
 from nltk.tokenize.regexp import RegexpTokenizer
@@ -43,7 +43,7 @@ from datetime import datetime
 #import tensorflow as tf
 #from tensorflow.keras.utils import to_categorical
 
-import Bibli_DataScience_3 as ds
+import Bibli_DataScience_3_1 as ds
 
 
 
@@ -172,9 +172,6 @@ class DS_ML(ds.DS_Model):
         #article = sent_tokenize(article)
         #sent = re.sub(liste_caracteres_speciaux, ' ', article)
         sent = ' '.join(r.findall(article))
-        # Remplacer '°' par ' ° ' pour le séparer des autres caractères
-        sent = re.sub(r'°', r' ° ', sent)
-
                 
         ## Etape 3: Découper chaque phrase en une liste de mots
         sent = word_tokenize(sent)
@@ -246,7 +243,7 @@ class DS_ML(ds.DS_Model):
        
      #     Train       : "None" , "Save"  , "Load"  =>   "Save" : on enregistre les données d'entrainement
      #                                              =>   "Load" : on charge les données d'entrainement                 
-     def Train_Test_Split_(self,train_size=0.8, random_state=1234,  RandUnderSampl = True,  RandomOverSampl = True,fic="None"):    
+     def Train_Test_Split_(self,train_size=0.8, random_state=1234,  fic="None"):    
         
         
         if fic == "Load" :
@@ -387,13 +384,6 @@ class ML_SVC(DS_ML):
          y_pred = text_clf.predict(pd.Series(X_test))
          return(y_pred)
      
-     def proba_phrases(self,designation,description): 
-         X_test=self.traiter_phrases(designation,description)
-         print(ds.get_RACINE_DOSSIER(),self.__nom_modele+'_dump')
-         text_clf = ds.joblib_load(self.__nom_modele+'_dump')
-         y_pred = text_clf.predict_proba(pd.Series(X_test))
-         return(y_pred)    
-     
      def load_modele(self,Train="None"):   
          print('load_modele')
          print(self.__nom_modele+'_dump')
@@ -451,8 +441,8 @@ class ML_SVC(DS_ML):
 # ************************************************************************************************  
 class ML_LinearSVCFromModel(DS_ML):     
 
-     def __init__(self, nom_modele,process=True):
-        super().__init__(nom_modele,process=process)
+     def __init__(self, nom_modele):
+        super().__init__(nom_modele)
             
         self.__nom_modele = nom_modele
         
@@ -488,14 +478,8 @@ class ML_LinearSVCFromModel(DS_ML):
         if Train == 'Save' :
             ds.joblib_dump(text_lsvm,self.__nom_modele+'_dump') 
         
-        X_train_SVC = text_lsvm.transform(X_train,y_train)
+        X_train_SVC = text_lsvm.fit_transform(X_train,y_train)
         X_test_SVC = text_lsvm.transform(X_test)
-        
-        print(X_train.loc[184])
-        print("*******************")
-        print(X_train_SVC[184])
-        print("*******************")
-        print(text_lsvm.transform([X_train.loc[184]]))
 
         X_train_SVC = X_train_SVC.todense()
         X_test_SVC = X_test_SVC.todense()
@@ -528,33 +512,6 @@ class ML_LinearSVCFromModel(DS_ML):
         
         duration = end_time - start_time
         print("La durée de l'entraînement était : ", duration)
-        
-     def preparer_concatenation(self,designation,description): 
-         X_test=self.traiter_phrases(designation,description)
-         print(ds.get_RACINE_DOSSIER(),self.__nom_modele+'_dump')
-         text_clf = ds.joblib_load(self.__nom_modele+'_dump')
-         X_test_SVC = text_clf.transform(pd.Series(X_test))
-         X_test_SVC = X_test_SVC.todense()
-         return(X_test_SVC) 
-     
-    
-        
-     def load_modele(self,Train="None"):   
-         print('load_modele')
-         print(self.__nom_modele+'_dump')
-         
-         text_lsvm = ds.joblib_load(self.__nom_modele+'_dump')
-         start_time = datetime.now()
-         print("L'heure au début de l'entraînement était : ", start_time)   
-         X_test = ds.load_ndarray('X_test')
-         y_test = ds.load_ndarray('y_test')
-         
-          
-             
-         print(X_test[:5])
-         
-         
-         return text_lsvm   
 # ************************************************************************************************  
 class ML_LinearSVC(DS_ML):     
 
@@ -620,45 +577,7 @@ class ML_LinearSVC(DS_ML):
         #self.set_df_prob(df_prob)
         
         duration = end_time - start_time
-        print("La durée de l'entraînement était : ", duration)
-        
-     def load_modele(self,Train="None"):   
-        print('load_modele')
-        text_lsvm = ds.joblib_load(self.__nom_modele+'_dump')
-        X_test = ds.load_ndarray('X_test')
-        y_test = ds.load_ndarray('y_test')
-        
-         
-            
-        print(X_test[:5])
-        
-        # Testez le modèle sur l'ensemble de test
-        y_pred = text_lsvm.predict(X_test)
-        #y_prob = text_lsvm.predict_proba(X_test)
-        
-        f1 = f1_score(y_test, y_pred, average='weighted')
-        print("F1 Score: ", f1)
-        accuracy = text_lsvm.score(X_test, y_test)
-        print("Accuracy: ", accuracy)
-        
-        self.set_y_orig(y_test)
-        self.set_y_pred(y_pred)
-        #self.set_y_prob(y_prob)
-        
-        #df_prob = self.Calculer_df_prob(y_pred,y_prob)
-        #self.set_df_prob(df_prob)
-        
-        #ds.save_dataframe(df_prob,self.__nom_modele+'_prob.csv')
-       
-
-      
-        df_pred = ds.get_def_prediction(y_test, y_pred,self.get_cat())
-        self.set_df_pred(df_pred)
-        
-        df_cross = ds.get_df_crosstab(y_test, y_pred)
-        self.set_df_cross(df_cross)
-        
-        return text_lsvm
+        print("La durée de l'entraînement était : ", duration)        
 
 # ************************************************************************************************          
 class ML_LogisticRegression(DS_ML):     
@@ -758,20 +677,6 @@ class ML_LogisticRegression(DS_ML):
          self.set_df_cross(df_cross)
          
          return text_lr
-     
-     def predire_phrases(self,designation,description): 
-         X_test=self.traiter_phrases(designation,description)
-         print(ds.get_RACINE_DOSSIER(),self.__nom_modele+'_dump')
-         text_clf = ds.joblib_load(self.__nom_modele+'_dump')
-         y_pred = text_clf.predict(pd.Series(X_test))
-         return(y_pred)   
-     
-     def proba_phrases(self,designation,description): 
-         X_test=self.traiter_phrases(designation,description)
-         print(ds.get_RACINE_DOSSIER(),self.__nom_modele+'_dump')
-         text_clf = ds.joblib_load(self.__nom_modele+'_dump')
-         y_pred = text_clf.predict_proba(pd.Series(X_test))
-         return(y_pred)    
          
          
 # ************************************************************************************************   
@@ -871,21 +776,7 @@ class ML_RandomForest(DS_ML):
          df_cross = ds.get_df_crosstab(y_test, y_pred)
          self.set_df_cross(df_cross)
          
-         return text_forest   
-     
-     def predire_phrases(self,designation,description): 
-         X_test=self.traiter_phrases(designation,description)
-         print(ds.get_RACINE_DOSSIER(),self.__nom_modele+'_dump')
-         text_clf = ds.joblib_load(self.__nom_modele+'_dump')
-         y_pred = text_clf.predict(pd.Series(X_test))
-         return(y_pred)   
-     
-     def proba_phrases(self,designation,description): 
-         X_test=self.traiter_phrases(designation,description)
-         print(ds.get_RACINE_DOSSIER())
-         text_clf = ds.joblib_load(self.__nom_modele+'_dump')
-         y_pred = text_clf.predict_proba(pd.Series(X_test))
-         return(y_pred)    
+         return text_forest    
         
 # ************************************************************************************************     
 class ML_GradientBoosting(DS_ML):     
@@ -949,17 +840,17 @@ class ML_GradientBoosting(DS_ML):
      def load_modele(self,Train="None"):   
         print('load_modele',self.__nom_modele+'_dump')
         text_gboost = ds.joblib_load(self.__nom_modele+'_dump')
-       
+        print("L'heure au début de l'entraînement était : ", start_time) 
         X_test = ds.load_ndarray('X_test')
         y_test = ds.load_ndarray('y_test')
       
+       
+          
         print(X_test[:5])
       
       # Testez le modèle sur l'ensemble de test
         y_pred = text_gboost.predict(X_test)
         y_prob = text_gboost.predict_proba(X_test)
-        
-       
       
         f1 = f1_score(y_test, y_pred, average='weighted')
         print("F1 Score: ", f1)
@@ -1007,9 +898,7 @@ class ML_XGBClassifier(DS_ML):
         
         y_train_encoded = label_encoder.fit_transform(y_train)
         y_test_encoded = label_encoder.transform(y_test)
-        ds.save_ndarray(label_encoder,self.__nom_modele+'_label_encoder')
-        
-      
+       
         text_xgboost = Pipeline([
             ('tfidf', TfidfVectorizer(lowercase=True,max_df=0.8, min_df=2)),
             ('clf', xgb.XGBClassifier(learning_rate=0.1,n_estimators=500,max_depth=10)),
@@ -1022,7 +911,6 @@ class ML_XGBClassifier(DS_ML):
         
         if Train == 'Save' :
             ds.joblib_dump(text_xgboost,self.__nom_modele+'_dump')
-            ds.save_ndarray(label_encoder,self.__nom_modele+'_label_encoder')
 
         # Testez le modèle sur l'ensemble de test
         y_pred_classes = text_xgboost.predict(X_test)
@@ -1050,61 +938,7 @@ class ML_XGBClassifier(DS_ML):
         self.set_df_pred(df_pred)      
 
         df_cross = ds.get_df_crosstab(y_test, y_pred)
-        self.set_df_cross(df_cross)   
-  
-      
-     def load_modele(self,Train="None"):   
-        print('load_modele',self.__nom_modele+'_dump')
-        label_encoder = LabelEncoder()
-        text_xgboost = ds.joblib_load(self.__nom_modele+'_dump')
-        label_encoder = ds.load_ndarray(self.__nom_modele+'_label_encoder')
-      
-        X_test = ds.load_ndarray('X_test')
-        y_test = ds.load_ndarray('y_test')
-     
-      
-         
-        print(X_test[:5])
-        print(y_test[:5])
-     
-     # Testez le modèle sur l'ensemble de test
-     
-        y_pred_classes = text_xgboost.predict(X_test)
-        y_pred = label_encoder.inverse_transform(y_pred_classes)
-        y_prob = text_xgboost.predict_proba(X_test)
-     
-        #y_pred = text_xgboost.predict(X_test)
-        #y_prob = text_xgboost.predict_proba(X_test)
-        
-        print("y_pred_classes",y_pred_classes[:5])
-        print("y_pred_classes",y_pred[:5])
-     
-        f1 = f1_score(y_test, y_pred, average='weighted')
-        print("F1 Score: ", f1)
-        
-        #trop long
-        #y_test_encoded = label_encoder.transform(y_test)
-        #accuracy = text_xgboost.score(X_test, y_test_encoded)
-        #print("Accuracy: ", accuracy)
-     
-        self.set_y_orig(y_test)
-        self.set_y_pred(y_pred)
-        self.set_y_prob(y_prob)
-     
-        df_prob = self.Calculer_df_prob(y_pred,y_prob)
-        self.set_df_prob(df_prob)
-     
-        ds.save_dataframe(df_prob,self.__nom_modele+'_prob.csv')
-    
-
-   
-        df_pred = ds.get_def_prediction(y_test, y_pred,self.get_cat())
-        self.set_df_pred(df_pred)
-     
-        df_cross = ds.get_df_crosstab(y_test, y_pred)
-        self.set_df_cross(df_cross)
-     
-        return text_xgboost            
+        self.set_df_cross(df_cross)    
 # ************************************************************************************************     
 class ML_MultinomialNB(DS_ML):     
 
@@ -1161,45 +995,7 @@ class ML_MultinomialNB(DS_ML):
         self.set_df_pred(df_pred) 
 
         df_cross = ds.get_df_crosstab(y_test, y_pred)
-        self.set_df_cross(df_cross)  
-        
-     def load_modele(self,Train="None"):   
-         print('load_modele')
-         text_NB = ds.joblib_load(self.__nom_modele+'_dump')
-         X_test = ds.load_ndarray('X_test')
-         y_test = ds.load_ndarray('y_test')
-         
-          
-             
-         print(X_test[:5])
-         
-         # Testez le modèle sur l'ensemble de test
-         y_pred = text_NB.predict(X_test)
-         y_prob = text_NB.predict_proba(X_test)
-         
-         f1 = f1_score(y_test, y_pred, average='weighted')
-         print("F1 Score: ", f1)
-         accuracy = text_NB.score(X_test, y_test)
-         print("Accuracy: ", accuracy)
-         
-         self.set_y_orig(y_test)
-         self.set_y_pred(y_pred)
-         self.set_y_prob(y_prob)
-         
-         df_prob = self.Calculer_df_prob(y_pred,y_prob)
-         self.set_df_prob(df_prob)
-         
-         ds.save_dataframe(df_prob,self.__nom_modele+'_prob.csv')
-        
-
-       
-         df_pred = ds.get_def_prediction(y_test, y_pred,self.get_cat())
-         self.set_df_pred(df_pred)
-         
-         df_cross = ds.get_df_crosstab(y_test, y_pred)
-         self.set_df_cross(df_cross)
-         
-         return text_NB      
+        self.set_df_cross(df_cross)    
 # ************************************************************************************************     
 class ML_DecisionTreeClassifier(DS_ML):     
 
@@ -1256,45 +1052,7 @@ class ML_DecisionTreeClassifier(DS_ML):
         self.set_df_pred(df_pred)   
 
         df_cross = ds.get_df_crosstab(y_test, y_pred)
-        self.set_df_cross(df_cross)
-        
-     def load_modele(self,Train="None"):   
-          print('load_modele')
-          text_DTCL = ds.joblib_load(self.__nom_modele+'_dump')
-          X_test = ds.load_ndarray('X_test')
-          y_test = ds.load_ndarray('y_test')
-          
-           
-              
-          print(X_test[:5])
-          
-          # Testez le modèle sur l'ensemble de test
-          y_pred = text_DTCL.predict(X_test)
-          y_prob = text_DTCL.predict_proba(X_test)
-          
-          f1 = f1_score(y_test, y_pred, average='weighted')
-          print("F1 Score: ", f1)
-          accuracy = text_DTCL.score(X_test, y_test)
-          print("Accuracy: ", accuracy)
-          
-          self.set_y_orig(y_test)
-          self.set_y_pred(y_pred)
-          self.set_y_prob(y_prob)
-          
-          df_prob = self.Calculer_df_prob(y_pred,y_prob)
-          self.set_df_prob(df_prob)
-          
-          ds.save_dataframe(df_prob,self.__nom_modele+'_prob.csv')
-         
-
-        
-          df_pred = ds.get_def_prediction(y_test, y_pred,self.get_cat())
-          self.set_df_pred(df_pred)
-          
-          df_cross = ds.get_df_crosstab(y_test, y_pred)
-          self.set_df_cross(df_cross)
-          
-          return text_DTCL      
+        self.set_df_cross(df_cross)    
 # ************************************************************************************************  
 class ML_Grid_RandomForest(DS_ML):     
 
