@@ -26,7 +26,7 @@ import json
 #    return configparser.__v
 
 
-config.read('Rakuten_config_colab.ini')   # Simon
+config.read('/content/Rakuten_Text_Classification_ML/Rakuten_config_colab.ini')   # Simon
 #config.read('Rakuten_config_3.ini')  # dell
 #config.read('Rakuten_config_2.ini')  # shadow
 config = configparser.ConfigParser()
