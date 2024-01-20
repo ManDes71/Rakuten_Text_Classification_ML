@@ -26,12 +26,12 @@ import json
 #    return configparser.__v
 
 
-#config.read('Rakuten_config.ini')   # Simon
+config.read('Rakuten_config_colab.ini')   # Simon
 #config.read('Rakuten_config_3.ini')  # dell
 #config.read('Rakuten_config_2.ini')  # shadow
 config = configparser.ConfigParser()
 #config.read('C:\\Users\\Shadow\\anaconda3\\envs\\tf\\PROJET\\Rakuten_config_2.ini')
-config.read('Rakuten_config.ini')
+#config.read('Rakuten_config.ini')
 
 def get_RACINE_DOSSIER() :
     return config['DOSSIER']['RACINE_DOSSIER']
