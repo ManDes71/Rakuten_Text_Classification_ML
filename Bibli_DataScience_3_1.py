@@ -26,10 +26,11 @@ import json
 #    return configparser.__v
 
 
-config.read('/content/Rakuten_Text_Classification_ML/Rakuten_config_colab.ini')   # Simon
+
 #config.read('Rakuten_config_3.ini')  # dell
 #config.read('Rakuten_config_2.ini')  # shadow
 config = configparser.ConfigParser()
+config.read('/content/Rakuten_Text_Classification_ML/Rakuten_config_colab.ini')   # Colab
 #config.read('C:\\Users\\Shadow\\anaconda3\\envs\\tf\\PROJET\\Rakuten_config_2.ini')
 #config.read('Rakuten_config.ini')
 
