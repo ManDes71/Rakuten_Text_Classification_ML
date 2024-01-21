@@ -605,7 +605,7 @@ class ML_LogisticRegression(DS_ML):
             ('clf', LogisticRegression(C=1,fit_intercept=True,solver='liblinear',penalty='l2',max_iter= 200)),
             ])
             
-         start_time = datetime.now()
+        start_time = datetime.now()
         print("L'heure au début de l'entraînement était : ", start_time)        
             
         # Entraînez le modèle
