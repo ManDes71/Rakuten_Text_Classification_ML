@@ -336,6 +336,7 @@ class ML_SVC(DS_ML):
 
         end_time = datetime.now()
         print("L'heure à la fin de l'entraînement était : ", end_time)
+        
         if Train == 'Save' :
             ds.joblib_dump(text_clf,self.__nom_modele+'_dump')
 
@@ -604,10 +605,14 @@ class ML_LogisticRegression(DS_ML):
             ('clf', LogisticRegression(C=1,fit_intercept=True,solver='liblinear',penalty='l2',max_iter= 200)),
             ])
             
-            
+         start_time = datetime.now()
+        print("L'heure au début de l'entraînement était : ", start_time)        
             
         # Entraînez le modèle
         text_lr.fit(X_train, y_train)
+        
+        end_time = datetime.now()
+        print("L'heure à la fin de l'entraînement était : ", end_time)
 
         # Testez le modèle sur l'ensemble de test
         y_pred = text_lr.predict(X_test)
@@ -706,9 +711,14 @@ class ML_RandomForest(DS_ML):
         #   DecisionTreeClassifier()     
         #Meilleurs paramètres : {'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'min_samples_split': 5} 
             
+        start_time = datetime.now()
+        print("L'heure au début de l'entraînement était : ", start_time)       
+            
         # Entraînez le modèle
         text_forest.fit(X_train, y_train)
         
+        end_time = datetime.now()
+        print("L'heure à la fin de l'entraînement était : ", end_time)
         
         if Train == 'Save' :
             ds.joblib_dump(text_forest,self.__nom_modele+'_dump')
@@ -802,10 +812,14 @@ class ML_GradientBoosting(DS_ML):
                     loss= 'log_loss', max_depth = 18, max_features = 'sqrt')),
             ])
             
-            
+        start_time = datetime.now()
+        print("L'heure au début de l'entraînement était : ", start_time)       
             
         # Entraînez le modèle
         text_gboost.fit(X_train, y_train)
+        
+        end_time = datetime.now()
+        print("L'heure à la fin de l'entraînement était : ", end_time)
         
         if Train == 'Save' :
             ds.joblib_dump(text_gboost,self.__nom_modele+'_dump')
@@ -904,10 +918,14 @@ class ML_XGBClassifier(DS_ML):
             ('clf', xgb.XGBClassifier(learning_rate=0.1,n_estimators=500,max_depth=10)),
             ])
             
-            
+        start_time = datetime.now()
+        print("L'heure au début de l'entraînement était : ", start_time)        
             
         # Entraînez le modèle
         text_xgboost.fit(X_train, y_train_encoded)
+        
+        end_time = datetime.now()
+        print("L'heure à la fin de l'entraînement était : ", end_time)
         
         if Train == 'Save' :
             ds.joblib_dump(text_xgboost,self.__nom_modele+'_dump')
@@ -962,10 +980,14 @@ class ML_MultinomialNB(DS_ML):
             ('clf', MultinomialNB(alpha = 0.1, fit_prior = False)),
             ])
             
-            
+        start_time = datetime.now()
+        print("L'heure au début de l'entraînement était : ", start_time)        
             
         # Entraînez le modèle
         text_NB.fit(X_train, y_train)
+        
+        end_time = datetime.now()
+        print("L'heure à la fin de l'entraînement était : ", end_time)
         
         if Train == 'Save' :
             ds.joblib_dump(text_NB,self.__nom_modele+'_dump')
@@ -1020,9 +1042,15 @@ class ML_DecisionTreeClassifier(DS_ML):
             ])
          #ecisionTreeClassifier(criterion ='entropy', max_depth=60, random_state=123)   
             
-            
+         
+        start_time = datetime.now()
+        print("L'heure au début de l'entraînement était : ", start_time)    
+        
         # Entraînez le modèle
         text_DTCL.fit(X_train, y_train)
+        
+        end_time = datetime.now()
+        print("L'heure à la fin de l'entraînement était : ", end_time)
         
         if Train == 'Save' :
             ds.joblib_dump(text_DTCL,self.__nom_modele+'_dump')
