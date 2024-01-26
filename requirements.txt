@@ -8,3 +8,4 @@ nltk == 3.7
 xgboost == 1.7.3
 wordcloud == 1.9.2
 seaborn == 0.12.2
+ajout scipy 1.11
