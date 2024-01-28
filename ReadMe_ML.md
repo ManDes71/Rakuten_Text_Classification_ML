@@ -836,27 +836,6 @@ df[['Id','designation','description','productid','imageid','PAYS_LANGUE','RATIO_
   </tbody>
 </table>
 
-```python
-svc_mod=svc.load_modele()
-X_test = ds.load_ndarray("X_test")
-y_test = ds.load_ndarray("y_test")
-```
-
-    load_modele
-    Mon_Modele_SVC_dump
-    L'heure au début de l'entraînement était :  2024-01-28 16:29:19.194476
-    25449    fille enfants crochet tricoté lace boot manchettes toppers jambière chaussettes gn auucne fille enfants crochet bonneterie lace boot manchettes to...
-    66854                                                                                                  star wars obi wan kenobi jedi pit droid blister episode
-    67970    tifon1 100 espa pompe piscine tension monophasé 230 puissance cv type pompe pompe piscine enterrée compatible traitement sel oui diamètre aspirati...
-    57392                           combat ° 2945 22 1953 farce versailles continuera longtemps allez laniel fabiani moscou accepte pourparlers secrets washington
-    26805                                                                                                           angèle laeken rare fans presse belge clippings
-    Name: phrases, dtype: object
-    y_prob
-    f1
-    L'heure à la fin de l'entraînement était :  2024-01-28 16:29:19.319728
-    La durée de l'entraînement était :  0:00:00.040893
-    
-
 
 ```python
 svc.fit_modele(savefics=True,Train="Save")
