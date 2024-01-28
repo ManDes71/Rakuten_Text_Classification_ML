@@ -81,7 +81,7 @@ parfois à une description supplémentaire. Ce produit est catégorisé sous le 
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_8_1.png)
+![png](images/ReadMe/output_8_1.png)
     
 
 
