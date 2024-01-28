@@ -159,7 +159,7 @@ print("il y a une grande disparité dans la répartition des classes !")
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_12_0.png)
+![png](images/ReadMe/output_12_0.png)
     
 
 
@@ -167,16 +167,6 @@ print("il y a une grande disparité dans la répartition des classes !")
     
 
 # Proposition de nomenclature des classes ("prdtypecode")
-
-
-```python
-nomenclature=pd.read_csv('NOMENCLATURE.csv',header=0,encoding='utf-8',sep=';',index_col=0)
-catdict=nomenclature.to_dict()['definition']
-catdict
-```
-
-
-
 
     {10: 'livres',
      40: 'jeux video pour pc et consoles',
@@ -207,143 +197,16 @@ catdict
      2905: 'Jeu En téléchargement'}
 
 
-
-
-```python
-print("----df_feats info-------")
-print(df_feats.info())
-print("-"*50)
-print("Le champ description n'est pas toujours présent.")
-print("-"*50)
-# Calcul de la moyenne des longueurs pour chaque colonne séparément
-moyenne_designation = df_feats['designation'].str.len().mean()
-moyenne_description = df_feats['description'].str.len().mean()
-
-print("Moyenne de la longueur des designations:", moyenne_designation)
-print("Moyenne de la longueur des descriptions:", moyenne_description)
-
-```
-
-    ----df_feats info-------
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 84916 entries, 0 to 84915
-    Data columns (total 5 columns):
-     #   Column       Non-Null Count  Dtype 
-    ---  ------       --------------  ----- 
-     0   Unnamed: 0   84916 non-null  int64 
-     1   designation  84916 non-null  object
-     2   description  55116 non-null  object
-     3   productid    84916 non-null  int64 
-     4   imageid      84916 non-null  int64 
-    dtypes: int64(3), object(2)
-    memory usage: 3.2+ MB
-    None
-    --------------------------------------------------
-    Le champ description n'est pas toujours présent.
-    --------------------------------------------------
-    Moyenne de la longueur des designations: 70.16330255782185
-    Moyenne de la longueur des descriptions: 808.1716924305102
-    
-
-
-```python
-import matplotlib.pyplot as plt
-
-categories = ['Designation', 'Description']
-
-moyennes = [moyenne_designation, moyenne_description]
-
-plt.figure(figsize=(16, 6))
-
-plt.subplot(1, 2, 1)
-plt.bar(categories, moyennes, color=['blue', 'green'])
-plt.title('Moyenne des Longueurs des champs Designation et Description')
-plt.xlabel('Catégories')
-plt.ylabel('Moyenne des Longueurs')
-plt.xticks(categories)
-
-nb_designation = len(df_feats[~df_feats['designation'].isna()])
-nb_description = len(df_feats['description'].unique())  # Assurez-vous que c'est bien 'description'
-
-Nb = [nb_designation, nb_description]
-plt.subplot(1, 2, 2)
-plt.bar(categories, Nb, color=['red', 'yellow'])  # Choisir des couleurs différentes
-plt.title('Valeurs non nulles des champs Designation et Description')
-plt.xlabel('Catégories')
-plt.ylabel('Nombre de produits')
-plt.xticks(categories)
-
-plt.show()
-
-```
-
-
-    
-![png](ReadMe_ML_files/ReadMe_ML_16_0.png)
+![png](images/ReadMe/output_16_0.png)
     
 
 
 ## Examinons les valeurs nulles et les doublons du champ 'designation':
 
-
-```python
-categories = ['Non nulles', 'Uniques']
-nb_designation = len(df_feats[~df_feats['designation'].isna()])
-nb_designation_u = len(df_feats['designation'].unique())
-
-Nb = [nb_designation, nb_designation_u]
-
-plt.figure(figsize=(8, 6))  # Vous pouvez ajuster la taille selon vos besoins
-plt.bar(categories,Nb, color=['blue', 'green'])  # Choisir des couleurs
-
-plt.title('valeurs non nulles et unicité du champ  Designation')
-plt.xlabel('Désignation')
-plt.ylabel('Nombres de produits')
-plt.xticks(categories)
-
-plt.show()
-
-```
-
-
-    
-![png](ReadMe_ML_files/ReadMe_ML_18_0.png)
-    
-
-
-
-```python
-
-```
-
-
-```python
-
-```
+![png](images/ReadMe/output_18_0.png)
 
 ## Examinons les valeurs nulles et les doublons du champ 'description'.
-
-
-```python
-categories = ['Non nulles', 'Uniques']
-nb_description = len(df_feats[~df_feats['description'].isna()])
-nb_description_u = len(df_feats['description'].unique())
-
-Nb = [nb_description, nb_description_u]
-
-plt.figure(figsize=(8, 6))
-plt.bar(categories,Nb, color=['blue', 'green'])
-
-plt.title('valeurs non nulles et unicité du champ  Description')
-plt.xlabel('Description')
-plt.ylabel('Nombres de produits')
-plt.xticks(categories)
-
-plt.show()
-```
-
-
-    
-![png](ReadMe_ML_files/ReadMe_ML_22_0.png)
+ 
+![png](images/ReadMe/output_22_0.png)
     
 
