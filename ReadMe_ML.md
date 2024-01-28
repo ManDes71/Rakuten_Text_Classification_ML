@@ -1,62 +1,3 @@
-***Google Colab -> Cette cellule est à executer (2 fois) pour le cloner le dépot en local***  
-il est possible que google colab vous demande re demarrer la session
-
-
-```python
-!git clone https://github.com/ManDes71/Rakuten_Text_Classification_ML.git
-```
-
-    Cloning into 'Rakuten_Text_Classification_ML'...
-    remote: Enumerating objects: 315, done.[K
-    remote: Counting objects: 100% (107/107), done.[K
-    remote: Compressing objects: 100% (101/101), done.[K
-    remote: Total 315 (delta 55), reused 16 (delta 5), pack-reused 208[K
-    Receiving objects: 100% (315/315), 52.00 MiB | 7.32 MiB/s, done.
-    Resolving deltas: 100% (146/146), done.
-    Updating files: 100% (56/56), done.
-    Filtering content: 100% (5/5), 1.41 GiB | 43.60 MiB/s, done.
-    
-
-***Google Colab -> Cette cellule est à executer (2 fois) pour installer les bibliothèques nécessaires***  
-You must restart the runtime in order to use newly installed versions.  
-
-
-```python
-import sys
-sys.path.append('/content/Rakuten_Text_Classification_ML')
-import sys
-print(sys.version)
-
-!pip install -r /content/Rakuten_Text_Classification_ML/requirements.txt
-```
-
-    3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]
-    Requirement already satisfied: numpy==1.26.3 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 1)) (1.26.3)
-    Requirement already satisfied: pandas==1.5.3 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 2)) (1.5.3)
-    Requirement already satisfied: matplotlib==3.8.0 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (3.8.0)
-    Requirement already satisfied: scikit_learn==1.2.2 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 4)) (1.2.2)
-    Requirement already satisfied: joblib==1.2.0 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 5)) (1.2.0)
-    Requirement already satisfied: langdetect==1.0.9 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 6)) (1.0.9)
-    Requirement already satisfied: nltk==3.7 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (3.7)
-    Requirement already satisfied: xgboost==1.7.3 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 8)) (1.7.3)
-    Requirement already satisfied: wordcloud==1.9.2 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 9)) (1.9.2)
-    Requirement already satisfied: seaborn==0.12.2 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 10)) (0.12.2)
-    Requirement already satisfied: scipy==1.11 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 11)) (1.11.0)
-    Requirement already satisfied: python-dateutil>=2.8.1 in /usr/local/lib/python3.10/dist-packages (from pandas==1.5.3->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 2)) (2.8.2)
-    Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas==1.5.3->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 2)) (2023.3.post1)
-    Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (1.2.0)
-    Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (0.12.1)
-    Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (4.47.2)
-    Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (1.4.5)
-    Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (23.2)
-    Requirement already satisfied: pillow>=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (9.4.0)
-    Requirement already satisfied: pyparsing>=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (3.1.1)
-    Requirement already satisfied: threadpoolctl>=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit_learn==1.2.2->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 4)) (3.2.0)
-    Requirement already satisfied: six in /usr/local/lib/python3.10/dist-packages (from langdetect==1.0.9->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 6)) (1.16.0)
-    Requirement already satisfied: click in /usr/local/lib/python3.10/dist-packages (from nltk==3.7->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (8.1.7)
-    Requirement already satisfied: regex>=2021.8.3 in /usr/local/lib/python3.10/dist-packages (from nltk==3.7->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (2023.6.3)
-    Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (from nltk==3.7->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (4.66.1)
-    
 
 # ***PROJET RAKUTEN***  
 
@@ -435,7 +376,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_10_1.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_10_1.png)
     
 
 
@@ -517,7 +458,7 @@ print("il y a une grande disparité dans la répartition des classes !")
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_15_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_15_0.png)
     
 
 
@@ -639,7 +580,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_20_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_20_0.png)
     
 
 
@@ -667,7 +608,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_22_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_22_0.png)
     
 
 
@@ -694,7 +635,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_24_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_24_0.png)
     
 
 
@@ -757,7 +698,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_29_1.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_29_1.png)
     
 
 
@@ -781,7 +722,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_31_1.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_31_1.png)
     
 
 
@@ -805,7 +746,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_33_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_33_0.png)
     
 
 
@@ -1989,7 +1930,7 @@ sns.heatmap(MAT)
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_39_1.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_39_1.png)
     
 
 
@@ -3192,7 +3133,7 @@ plt.show()
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_45_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_45_0.png)
     
 
 
@@ -3991,7 +3932,7 @@ ds.show_confusion_matrix(y_orig, y_pred)
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_67_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_67_0.png)
     
 
 
@@ -4259,7 +4200,7 @@ ds.show_confusion_matrix(y_orig, y_pred)
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_75_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_75_0.png)
     
 
 
@@ -4526,7 +4467,7 @@ ds.show_confusion_matrix(y_orig, y_pred)
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_82_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_82_0.png)
     
 
 
@@ -4831,7 +4772,7 @@ ds.show_confusion_matrix(y_orig, y_pred)
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_95_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_95_0.png)
     
 
 
@@ -5095,7 +5036,7 @@ ds.show_confusion_matrix(y_orig, y_pred)
 
 
     
-![png](ReadMe_ML_files/ReadMe_ML_101_0.png)
+![png](images/ReadMe_ML_files/ReadMe_ML_101_0.png)
     
 
 
