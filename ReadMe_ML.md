@@ -665,13 +665,6 @@ nltk.download('stopwords')
     [nltk_data]   Unzipping corpora/stopwords.zip.
     
 
-
-
-
-    True
-
-
-
 Ce notebook teste plusieurs modèles de Machine Learning
 
 explication de la bibliothèque **ML_Datascience**  :   
@@ -738,17 +731,6 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-    section :  ['DOSSIER', 'FICHIER']
-    section :  ['DOSSIER', 'FICHIER']
-    
-
-
-
-
-    <module 'ML_DataScience' from '/content/Rakuten_Text_Classification_ML/ML_DataScience.py'>
-
-
-
 ### ***Modèle SVC***
 
 la classe **ML_SVC** utilise un pipeline :
@@ -768,10 +750,7 @@ df = svc.get_DF()
 
     [nltk_data] Downloading package punkt to /root/nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
     preprocessing ...
-    
 
 
 ```python
