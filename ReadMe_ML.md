@@ -7,53 +7,7 @@ Par exemple, dans le catalogue de Rakuten France, un produit avec une désignati
 parfois à une description supplémentaire. Ce produit est catégorisé sous le code de produit 50.
 
 
-```python
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 
-from sklearn.feature_extraction.text import CountVectorizer
-pd.set_option('display.max_colwidth', 150)
-```
-
-
-```python
-# lecture des données sources d'entrainement
-df_feats=pd.read_csv('/content/Rakuten_Text_Classification_ML/X_train_update.csv')
-
-# lecture des données cibles d'entrainement
-df_target=pd.read_csv('/content/Rakuten_Text_Classification_ML/Y_train_CVw08PX.csv')
-
-# création d'un dataframe globale -  jointure
-df=df_feats.merge(df_target,on='Unnamed: 0',how='inner')
-df.rename(columns={'Unnamed: 0': 'Id'}, inplace=True)
-```
-
-
-```python
-df.head()
-```
-
-
-
-
-
-  <div id="df-7b857ba5-d143-4c99-9fc0-21940cd22a1c" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
