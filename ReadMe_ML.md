@@ -273,43 +273,10 @@ catdict
 
 
 ```python
-print("----df_feats info-------")
-print(df_feats.info())
-print("-"*50)
-print("Le champ description n'est pas toujours présent.")
-print("-"*50)
 # Calcul de la moyenne des longueurs pour chaque colonne séparément
 moyenne_designation = df_feats['designation'].str.len().mean()
 moyenne_description = df_feats['description'].str.len().mean()
 
-print("Moyenne de la longueur des designations:", moyenne_designation)
-print("Moyenne de la longueur des descriptions:", moyenne_description)
-
-```
-
-    ----df_feats info-------
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 84916 entries, 0 to 84915
-    Data columns (total 5 columns):
-     #   Column       Non-Null Count  Dtype 
-    ---  ------       --------------  ----- 
-     0   Unnamed: 0   84916 non-null  int64 
-     1   designation  84916 non-null  object
-     2   description  55116 non-null  object
-     3   productid    84916 non-null  int64 
-     4   imageid      84916 non-null  int64 
-    dtypes: int64(3), object(2)
-    memory usage: 3.2+ MB
-    None
-    --------------------------------------------------
-    Le champ description n'est pas toujours présent.
-    --------------------------------------------------
-    Moyenne de la longueur des designations: 70.16330255782185
-    Moyenne de la longueur des descriptions: 808.1716924305102
-    
-
-
-```python
 import matplotlib.pyplot as plt
 
 categories = ['Designation', 'Description']
