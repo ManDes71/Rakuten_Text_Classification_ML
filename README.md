@@ -5,18 +5,17 @@ https://mybinder.org/v2/gh/ManDes71/Rakuten_Text_Classification_ML/HEAD
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ManDes71/Rakuten_Text_Classification_ML/HEAD)
 
+# Titre1
+
+## Soustitre 2
+
 ```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
 %matplotlib inline
-
-
-
-    
 ```
-
 
 ```python
 """
@@ -34,7 +33,6 @@ XGBoost Classifier (bien que ce ne soit pas de scikit-learn, XGBoost a une méth
 """
 ```
 
-
 ```python
 import Bibli_DataScience_3 as ds
 import ML_DataScience as ml
@@ -45,16 +43,13 @@ imp.reload(ml)
 
     section :  ['DOSSIER', 'FICHIER']
     
-
-
-
-
+    
+    
+    
+    
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
 
-
-
-# SVC
-
+## SVC
 
 ```python
 svc = ml.ML_SVC("Mon_Modele_SVC")
@@ -67,17 +62,12 @@ df = svc.get_DF()
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
     
-
-    preprocessing ...
     
-
+    preprocessing ...
 
 ```python
 df.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -88,11 +78,13 @@ df.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -221,12 +213,8 @@ df.head()
 </table>
 </div>
 
-
-
-
 ```python
 svc_mod=svc.load_modele()
-
 ```
 
     load_modele
@@ -238,21 +226,15 @@ svc_mod=svc.load_modele()
     Name: phrases, dtype: object
     F1 Score:  0.8294178505558132
     Accuracy:  0.8256594441827603
-    
-
 
 ```python
 X_test = ds.load_ndarray("X_test")
 y_test = ds.load_ndarray("y_test")
 ```
 
-
 ```python
 X_test[:5]
 ```
-
-
-
 
     25449    fille enfants crochet tricoté lace boot manche...
     66854    star wars obi wan kenobi jedi pit droid bliste...
@@ -261,37 +243,23 @@ X_test[:5]
     26805       angèle laeken rare fans presse belge clippings
     Name: phrases, dtype: object
 
-
-
-
 ```python
 type(X_test)
 ```
 
-
-
-
     pandas.core.series.Series
-
-
-
 
 ```python
 #svc.fit_modele(savefics=True,Train="Save")
 ```
 
     L'heure au début de l'entraînement était :  2023-10-23 18:42:21.817251
-    
-
 
 ```python
 df_cross = svc.get_df_cross()
 df_pred = svc.get_df_pred()
 df_pred.head(30)
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -302,11 +270,13 @@ df_pred.head(30)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -595,22 +565,15 @@ df_pred.head(30)
 </table>
 </div>
 
-
-
-
 ```python
 X_test = ds.load_ndarray("X_test")
 y_test = ds.load_ndarray("y_test")
 ```
 
-
 ```python
 df_prob = svc.get_df_prob()
 df_prob.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -621,11 +584,13 @@ df_prob.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -664,9 +629,6 @@ df_prob.head()
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = svc.get_y_orig()
 y_pred = svc.get_y_pred()
@@ -675,7 +637,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 82.56594441827603 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.41      0.72      0.52       623
@@ -709,20 +671,12 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.83     16984
        macro avg       0.84      0.80      0.82     16984
     weighted avg       0.84      0.83      0.83     16984
-    
-    
-
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_15_0.png)
-    
-
-
 
 ```python
 Lcat=svc.get_cat()
@@ -893,18 +847,15 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       : 40,  : 1.15 % , jeux video pour pc et consoles
       : 2585,  : 0.57 % , outillage et accesoires pour jardinage
     
-
+    
     E:\Manuel\PROJET\Bibli_DataScience_3.py:134: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
       for index, value in s.iteritems():
-    
-
 
 ```python
 X_test = ds.load_ndarray("X_test")
 y_test = ds.load_ndarray("y_test")
 df_test = pd.concat([X_test,y_test],axis=1)
 ```
-
 
 ```python
 
@@ -921,16 +872,16 @@ most_common_words_by_code = {}
 for name, group in grouped:
     # Combinez toutes les phrases en une seule chaîne de texte
     all_text = ' '.join(group['phrases'])
-    
+
     # Séparez la chaîne en mots
     words = all_text.split()
-    
+
     # Comptez les occurrences de chaque mot
     word_count = Counter(words)
-    
+
     # Obtenez les 40 mots les plus communs
     most_common_words = word_count.most_common(40)
-    
+
     # Stockez le résultat dans le dictionnaire
     most_common_words_by_code[name] = most_common_words
 
@@ -939,8 +890,6 @@ for code, words in most_common_words_by_code.items():
     print(f"Pour le prdtypecode {code}, les 40 mots les plus fréquents sont :")
     print(words)
     print("---")
-
-
 ```
 
     Pour le prdtypecode 10, les 40 mots les plus fréquents sont :
@@ -1024,10 +973,8 @@ for code, words in most_common_words_by_code.items():
     Pour le prdtypecode 2905, les 40 mots les plus fréquents sont :
     [('39', 1691), ('jeu', 539), ('windows', 368), ('carte', 251), ('directx', 217), ('gb', 211), ('go', 211), ('ram', 195), ('disque', 194), ('système', 191), ('mémoire', 189), ('ghz', 184), ('processeur', 183), ('requise', 180), ('téléchargement', 173), ('amd', 172), ('intel', 168), ('geforce', 163), ('core', 163), ('espace', 156), ('internet', 151), ('nvidia', 150), ('64', 132), ('configuration', 131), ('connexion', 128), ('dur', 116), ('radeon', 116), ('compatible', 114), ('utiliser', 113), ('vidéo', 111), ('os', 110), ('note', 109), ('propos', 109), ('compte', 108), ('monde', 105), ('steam', 99), ('mode', 92), ('gtx', 90), ('mo', 90), ('hd', 87)]
     ---
-    
 
 ## Catégorie 10, 2705, 2280, 2403
-
 
 ```python
 selected_categories = [10, 2705, 2280, 2403]
@@ -1047,7 +994,6 @@ for item in occurrences_triees:
 df_words=pd.DataFrame.from_dict(Dic_words, orient='index',columns=['Total'])
 print(df_words.head(10))
 print(df_words.tail())
-
 ```
 
               Total
@@ -1067,15 +1013,13 @@ print(df_words.tail())
     03           69
     temps        68
     edition      66
-    
-
 
 ```python
 df_total_livres=df_words
 for c in [10,2705,2280,2403]:
     filtered_df = df_test[df_test['prdtypecode']==c]
     all_text = ' '.join(filtered_df['phrases'])
-  
+
     word_count = Counter(all_text.split())
     occurrences_triees = sorted(word_count.items(), key=lambda x: x[1], reverse=True)[:40]
     Dic_words={}
@@ -1086,9 +1030,6 @@ for c in [10,2705,2280,2403]:
 df_total_livres.head(20)
 ```
 
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1098,11 +1039,13 @@ df_total_livres.head(20)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1279,9 +1222,6 @@ df_total_livres.head(20)
 </table>
 </div>
 
-
-
-
 ```python
 fig, ax = plt.subplots(figsize=(2,20))
 cax = ax.matshow(df_total_livres.iloc[0:20], cmap = 'coolwarm')
@@ -1290,14 +1230,9 @@ plt.yticks(range(20),df_total_livres.iloc[0:20].index,rotation=0)
 plt.show()
 ```
 
-
-    
 ![png](output_22_0.png)
-    
-
 
 ## Catégorie 40,50,2462
-
 
 ```python
 selected_categories = [40,50,2462]
@@ -1336,15 +1271,13 @@ print(df_words.tail())
     fil             92
     poignée         92
     manettes        89
-    
-
 
 ```python
 df_total_livres=df_words
 for c in [40,50,2462]:
     filtered_df = df_test[df_test['prdtypecode']==c]
     all_text = ' '.join(filtered_df['phrases'])
-  
+
     word_count = Counter(all_text.split())
     occurrences_triees = sorted(word_count.items(), key=lambda x: x[1], reverse=True)[:40]
     Dic_words={}
@@ -1355,9 +1288,6 @@ for c in [40,50,2462]:
 df_total_livres.head(20)
 ```
 
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1367,11 +1297,13 @@ df_total_livres.head(20)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1527,9 +1459,6 @@ df_total_livres.head(20)
 </table>
 </div>
 
-
-
-
 ```python
 fig, ax = plt.subplots(figsize=(2,20))
 cax = ax.matshow(df_total_livres.iloc[0:20], cmap = 'coolwarm')
@@ -1538,14 +1467,9 @@ plt.yticks(range(20),df_total_livres.iloc[0:20].index,rotation=0)
 plt.show()
 ```
 
-
-    
 ![png](output_26_0.png)
-    
-
 
 ## Catégorie 1280,1281
-
 
 ```python
 selected_categories = [1280,1281]
@@ -1584,15 +1508,13 @@ print(df_words.tail())
     paquet       187
     modèle       186
     puzzle       185
-    
-
 
 ```python
 df_total_livres=df_words
 for c in [1280,1281]:
     filtered_df = df_test[df_test['prdtypecode']==c]
     all_text = ' '.join(filtered_df['phrases'])
-  
+
     word_count = Counter(all_text.split())
     occurrences_triees = sorted(word_count.items(), key=lambda x: x[1], reverse=True)[:40]
     Dic_words={}
@@ -1603,9 +1525,6 @@ for c in [1280,1281]:
 df_total_livres.head(20)
 ```
 
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1615,11 +1534,13 @@ df_total_livres.head(20)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1754,9 +1675,6 @@ df_total_livres.head(20)
 </table>
 </div>
 
-
-
-
 ```python
 fig, ax = plt.subplots(figsize=(2,20))
 cax = ax.matshow(df_total_livres.iloc[0:20], cmap = 'coolwarm')
@@ -1765,12 +1683,7 @@ plt.yticks(range(20),df_total_livres.iloc[0:20].index,rotation=0)
 plt.show()
 ```
 
-
-    
 ![png](output_30_0.png)
-    
-
-
 
 ```python
 ds.ajout_REPORT_40_PRED(y_orig, y_pred,svc.get_REPORT_MODELE(),svc.get_REPORT_LIBELLE(),svc.get_REPORT_ID())
@@ -1780,8 +1693,6 @@ print(svc.get_REPORT_LIBELLE())
 
     SVM1
     SVM AVEC TDIDF
-    
-
 
 ```python
 # RECUPERATION
@@ -1791,12 +1702,9 @@ y_orig,y_pred = test.restore_predict_arrays()
 df_pred = test.restore_predict_dataframe()
 
 """
-
-
 ```
 
 # LogisticRegression
-
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -1806,13 +1714,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 lr = ml.ML_LogisticRegression("LogisticRegression")
@@ -1821,8 +1723,6 @@ lr = ml.ML_LogisticRegression("LogisticRegression")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 lr.fit_modele(savefics=True,Train="Save")
@@ -1830,17 +1730,12 @@ lr.fit_modele(savefics=True,Train="Save")
 
     F1 Score:  0.8018564958168756
     Accuracy:  0.8022845030617052
-    
-
 
 ```python
 df_cross = lr.get_df_cross()
 df_pred = lr.get_df_pred()
 df_pred.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -1851,11 +1746,13 @@ df_pred.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1924,16 +1821,10 @@ df_pred.head()
 </table>
 </div>
 
-
-
-
 ```python
 df_prob = lr.get_df_prob()
 df_prob.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -1944,11 +1835,13 @@ df_prob.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1987,9 +1880,6 @@ df_prob.head()
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = lr.get_y_orig()
 y_pred = lr.get_y_pred()
@@ -1998,7 +1888,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 80.22845030617052 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.45      0.67      0.53       623
@@ -2032,16 +1922,10 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.80     16984
        macro avg       0.82      0.76      0.78     16984
     weighted avg       0.81      0.80      0.80     16984
-    
-    
-
 
 ```python
 df_cross
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -2052,11 +1936,13 @@ df_cross
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2762,19 +2648,11 @@ df_cross
 <p>27 rows × 27 columns</p>
 </div>
 
-
-
-
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_41_0.png)
-    
-
-
 
 ```python
 ds.show_confusion_matrix3(y_orig, y_pred)
@@ -2793,25 +2671,14 @@ ds.show_confusion_matrix3(y_orig, y_pred)
     6093     2905    2905
     22222    2905    2905
     [10, 40, 50, 60, 1140, 1160, 1180, 1280, 1281, 1300, 1301, 1302, 1320, 1560, 1920, 1940, 2060, 2220, 2280, 2403, 2462, 2522, 2582, 2583, 2585, 2705, 2905]
-    
 
-
-    
 ![png](output_42_1.png)
-    
-
-
 
 ```python
 ds.show_confusion_matrix2(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_43_0.png)
-    
-
-
 
 ```python
 Lcat=lr.get_cat()
@@ -2823,10 +2690,10 @@ catdict
     [  10   40   50   60 1140 1160 1180 1280 1281 1300 1301 1302 1320 1560
      1920 1940 2060 2220 2280 2403 2462 2522 2582 2583 2585 2705 2905]
     
-
-
-
-
+    
+    
+    
+    
     {10: 'livres',
      40: 'jeux video pour pc et consoles',
      50: ' accesoires jeux video',
@@ -2854,9 +2721,6 @@ catdict
      2585: 'outillage et accesoires pour jardinage',
      2705: 'bds et livres',
      2905: 'Jeu En téléchargement'}
-
-
-
 
 ```python
 ds.Afficher_repartition(df_cross,Lcat,catdict)
@@ -3025,19 +2889,15 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       : 1280,  : 1.72 % , jouets, peluches, puppets
       : 2585,  : 0.57 % , outillage et accesoires pour jardinage
     
-
+    
     E:\Manuel\PROJET\Bibli_DataScience_3.py:134: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
       for index, value in s.iteritems():
-    
-
 
 ```python
 X_test = ds.load_ndarray("X_test")
 y_test = ds.load_ndarray("y_test")
 df_test = pd.concat([X_test,y_test],axis=1)
-
 ```
-
 
 ```python
 from collections import Counter
@@ -3053,16 +2913,16 @@ most_common_words_by_code = {}
 for name, group in grouped:
     # Combinez toutes les phrases en une seule chaîne de texte
     all_text = ' '.join(group['phrases'])
-    
+
     # Séparez la chaîne en mots
     words = all_text.split()
-    
+
     # Comptez les occurrences de chaque mot
     word_count = Counter(words)
-    
+
     # Obtenez les 40 mots les plus communs
     most_common_words = word_count.most_common(40)
-    
+
     # Stockez le résultat dans le dictionnaire
     most_common_words_by_code[name] = most_common_words
 
@@ -3071,7 +2931,6 @@ for code, words in most_common_words_by_code.items():
     print(f"Pour le prdtypecode {code}, les 40 mots les plus fréquents sont :")
     print(words)
     print("---")
-
 ```
 
     Pour le prdtypecode 10, les 40 mots les plus fréquents sont :
@@ -3155,10 +3014,8 @@ for code, words in most_common_words_by_code.items():
     Pour le prdtypecode 2905, les 40 mots les plus fréquents sont :
     [('39', 1691), ('jeu', 539), ('windows', 368), ('carte', 251), ('directx', 217), ('gb', 211), ('go', 211), ('ram', 195), ('disque', 194), ('système', 191), ('mémoire', 189), ('ghz', 184), ('processeur', 183), ('requise', 180), ('téléchargement', 173), ('amd', 172), ('intel', 168), ('geforce', 163), ('core', 163), ('espace', 156), ('internet', 151), ('nvidia', 150), ('64', 132), ('configuration', 131), ('connexion', 128), ('dur', 116), ('radeon', 116), ('compatible', 114), ('utiliser', 113), ('vidéo', 111), ('os', 110), ('note', 109), ('propos', 109), ('compte', 108), ('monde', 105), ('steam', 99), ('mode', 92), ('gtx', 90), ('mo', 90), ('hd', 87)]
     ---
-    
 
 ## Catégorie 10, 2705, 2280, 2403
-
 
 ```python
 
@@ -3179,7 +3036,6 @@ for item in occurrences_triees:
 df_words=pd.DataFrame.from_dict(Dic_words, orient='index',columns=['Total'])
 print(df_words.head(10))
 print(df_words.tail())
-
 ```
 
               Total
@@ -3199,15 +3055,13 @@ print(df_words.tail())
     03           69
     temps        68
     edition      66
-    
-
 
 ```python
 df_total_livres=df_words
 for c in [10,2705,2280,2403]:
     filtered_df = df_test[df_test['prdtypecode']==c]
     all_text = ' '.join(filtered_df['phrases'])
-  
+
     word_count = Counter(all_text.split())
     occurrences_triees = sorted(word_count.items(), key=lambda x: x[1], reverse=True)[:40]
     Dic_words={}
@@ -3218,9 +3072,6 @@ for c in [10,2705,2280,2403]:
 df_total_livres.head(20)
 ```
 
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3230,11 +3081,13 @@ df_total_livres.head(20)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3411,9 +3264,6 @@ df_total_livres.head(20)
 </table>
 </div>
 
-
-
-
 ```python
 fig, ax = plt.subplots(figsize=(2,20))
 cax = ax.matshow(df_total_livres.iloc[0:20], cmap = 'coolwarm')
@@ -3422,14 +3272,9 @@ plt.yticks(range(20),df_total_livres.iloc[0:20].index,rotation=0)
 plt.show()
 ```
 
-
-    
 ![png](output_51_0.png)
-    
-
 
 ## Catégorie 40,50,2462
-
 
 ```python
 selected_categories = [40,50,2462]
@@ -3468,15 +3313,13 @@ print(df_words.tail())
     fil             92
     poignée         92
     manettes        89
-    
-
 
 ```python
 df_total_livres=df_words
 for c in [40,50,2462]:
     filtered_df = df_test[df_test['prdtypecode']==c]
     all_text = ' '.join(filtered_df['phrases'])
-  
+
     word_count = Counter(all_text.split())
     occurrences_triees = sorted(word_count.items(), key=lambda x: x[1], reverse=True)[:40]
     Dic_words={}
@@ -3487,9 +3330,6 @@ for c in [40,50,2462]:
 df_total_livres.head(20)
 ```
 
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3499,11 +3339,13 @@ df_total_livres.head(20)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3659,9 +3501,6 @@ df_total_livres.head(20)
 </table>
 </div>
 
-
-
-
 ```python
 fig, ax = plt.subplots(figsize=(2,20))
 cax = ax.matshow(df_total_livres.iloc[0:20], cmap = 'coolwarm')
@@ -3670,14 +3509,9 @@ plt.yticks(range(20),df_total_livres.iloc[0:20].index,rotation=0)
 plt.show()
 ```
 
-
-    
 ![png](output_55_0.png)
-    
-
 
 ## Catégorie 1280,1281
-
 
 ```python
 selected_categories = [1280,1281]
@@ -3716,15 +3550,13 @@ print(df_words.tail())
     paquet       187
     modèle       186
     puzzle       185
-    
-
 
 ```python
 df_total_livres=df_words
 for c in [1280,1281]:
     filtered_df = df_test[df_test['prdtypecode']==c]
     all_text = ' '.join(filtered_df['phrases'])
-  
+
     word_count = Counter(all_text.split())
     occurrences_triees = sorted(word_count.items(), key=lambda x: x[1], reverse=True)[:40]
     Dic_words={}
@@ -3735,9 +3567,6 @@ for c in [1280,1281]:
 df_total_livres.head(20)
 ```
 
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3747,11 +3576,13 @@ df_total_livres.head(20)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3886,9 +3717,6 @@ df_total_livres.head(20)
 </table>
 </div>
 
-
-
-
 ```python
 fig, ax = plt.subplots(figsize=(2,20))
 cax = ax.matshow(df_total_livres.iloc[0:20], cmap = 'coolwarm')
@@ -3897,12 +3725,7 @@ plt.yticks(range(20),df_total_livres.iloc[0:20].index,rotation=0)
 plt.show()
 ```
 
-
-    
 ![png](output_59_0.png)
-    
-
-
 
 ```python
 ds.ajout_REPORT_40_PRED(y_orig, y_pred,lr.get_REPORT_MODELE(),lr.get_REPORT_LIBELLE(),lr.get_REPORT_ID())
@@ -3912,10 +3735,8 @@ print(lr.get_REPORT_LIBELLE())
 
     LR1
     LogisticRegression AVEC TDIDF
-    
 
-# RandomForestClassifier
-
+## RandomForestClassifier
 
 ```python
 forest = ml.ML_RandomForest("RandomForestClassifier")
@@ -3924,8 +3745,6 @@ forest = ml.ML_RandomForest("RandomForestClassifier")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 forest.fit_modele(savefics=True,Train="load")
@@ -3933,17 +3752,12 @@ forest.fit_modele(savefics=True,Train="load")
 
     F1 Score:  0.7932958883861291
     Accuracy:  0.7926283560998587
-    
-
 
 ```python
 df_cross = forest.get_df_cross()
 df_pred = forest.get_df_pred()
 df_pred.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -3954,11 +3768,13 @@ df_pred.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4027,16 +3843,10 @@ df_pred.head()
 </table>
 </div>
 
-
-
-
 ```python
 df_prob = forest.get_df_prob()
 df_prob.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -4047,11 +3857,13 @@ df_prob.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4090,9 +3902,6 @@ df_prob.head()
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = forest.get_y_orig()
 y_pred = forest.get_y_pred()
@@ -4101,7 +3910,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 79.26283560998587 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.40      0.70      0.51       623
@@ -4135,20 +3944,12 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.79     16984
        macro avg       0.82      0.76      0.78     16984
     weighted avg       0.80      0.79      0.79     16984
-    
-    
-
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_67_0.png)
-    
-
-
 
 ```python
 Lcat=forest.get_cat()
@@ -4158,8 +3959,6 @@ catdict = forest.get_catdict()
 
     [  10   40   50   60 1140 1160 1180 1280 1281 1300 1301 1302 1320 1560
      1920 1940 2060 2220 2280 2403 2462 2522 2582 2583 2585 2705 2905]
-    
-
 
 ```python
 ds.Afficher_repartition(df_cross,Lcat,catdict)
@@ -4328,11 +4127,9 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       : 2585,  : 0.0 % , outillage et accesoires pour jardinage
       : 2583,  : 0.0 % , accesoires de piscine
     
-
+    
     E:\Manuel\PROJET\Bibli_DataScience_3.py:134: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
       for index, value in s.iteritems():
-    
-
 
 ```python
 ds.ajout_REPORT_40_PRED(y_orig, y_pred,forest.get_REPORT_MODELE(),forest.get_REPORT_LIBELLE(),forest.get_REPORT_ID())
@@ -4342,10 +4139,8 @@ print(forest.get_REPORT_LIBELLE())
 
     FOREST1
     RandomForest AVEC TDIDF
-    
 
-# GradientBoosting
-
+## GradientBoosting
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -4355,13 +4150,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 gboost  = ml.ML_GradientBoosting("GradientBoosting")
@@ -4370,8 +4159,6 @@ gboost  = ml.ML_GradientBoosting("GradientBoosting")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 gboost.fit_modele(savefics=True,Train="Load")
@@ -4379,8 +4166,6 @@ gboost.fit_modele(savefics=True,Train="Load")
 
     F1 Score:  0.7564865328145529
     Accuracy:  0.7554757418747056
-    
-
 
 ```python
 print( gboost.get_REPORT_ID())
@@ -4389,17 +4174,12 @@ print( gboost.get_REPORT_LIBELLE())
 
     GRBOOST1
     GradientBoosting AVEC TDIDF
-    
-
 
 ```python
 df_cross = gboost.get_df_cross()
 df_pred = gboost.get_df_pred()
 df_pred.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -4410,11 +4190,13 @@ df_pred.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4483,16 +4265,10 @@ df_pred.head()
 </table>
 </div>
 
-
-
-
 ```python
 df_prob = gboost.get_df_prob()
 df_prob.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -4503,11 +4279,13 @@ df_prob.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4546,9 +4324,6 @@ df_prob.head()
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = gboost.get_y_orig()
 y_pred = gboost.get_y_pred()
@@ -4557,7 +4332,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 75.54757418747056 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.34      0.56      0.42       623
@@ -4591,20 +4366,12 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.76     16984
        macro avg       0.74      0.69      0.71     16984
     weighted avg       0.76      0.76      0.76     16984
-    
-    
-
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_79_0.png)
-    
-
-
 
 ```python
 Lcat=gboost.get_cat()
@@ -4614,8 +4381,6 @@ catdict = gboost.get_catdict()
 
     [  10   40   50   60 1140 1160 1180 1280 1281 1300 1301 1302 1320 1560
      1920 1940 2060 2220 2280 2403 2462 2522 2582 2583 2585 2705 2905]
-    
-
 
 ```python
 ds.Afficher_repartition(df_cross,Lcat,catdict)
@@ -4784,11 +4549,9 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       : 1280,  : 2.87 % , jouets, peluches, puppets
       : 2583,  : 2.3 % , accesoires de piscine
     
-
+    
     E:\Manuel\PROJET\Bibli_DataScience_3.py:134: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
       for index, value in s.iteritems():
-    
-
 
 ```python
 ds.ajout_REPORT_40_PRED(y_orig, y_pred, gboost.get_REPORT_MODELE(), gboost.get_REPORT_LIBELLE(), gboost.get_REPORT_ID())
@@ -4798,10 +4561,8 @@ print( gboost.get_REPORT_LIBELLE())
 
     GRBOOST1
     GradientBoosting AVEC TDIDF
-    
 
-# XGBClassifier
-
+## XGBClassifier
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -4811,13 +4572,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 xgboost= ml.ML_XGBClassifier("XGBClassifier")
@@ -4826,8 +4581,6 @@ xgboost= ml.ML_XGBClassifier("XGBClassifier")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 xgboost.fit_modele(savefics=True,Train="Load")
@@ -4835,19 +4588,16 @@ xgboost.fit_modele(savefics=True,Train="Load")
 
     F1 Score:  0.8218895322680778
     Accuracy:  0.8171808761186999
-    
 
 F1 Score:  0.8230882740565053
 Accuracy:  0.8181229392369289
 xgb.XGBClassifier(learning_rate=0.1,n_estimators=500,max_depth=7)
-
 
 ```python
 F1 Score:  0.824497612631608
 Accuracy:  0.8204780970325012
 learning_rate=0.1,n_estimators=500,max_depth=10)
 ```
-
 
 ```python
 print(xgboost.get_REPORT_ID())
@@ -4856,17 +4606,12 @@ print( xgboost.get_REPORT_LIBELLE())
 
     xgboost1
     XGBClassifier AVEC TDIDF
-    
-
 
 ```python
 df_cross =xgboost.get_df_cross()
 df_pred = xgboost.get_df_pred()
 df_pred.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -4877,11 +4622,13 @@ df_pred.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4950,16 +4697,10 @@ df_pred.head()
 </table>
 </div>
 
-
-
-
 ```python
 df_prob = xgboost.get_df_prob()
 df_prob.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -4970,11 +4711,13 @@ df_prob.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5013,9 +4756,6 @@ df_prob.head()
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = xgboost.get_y_orig()
 y_pred = xgboost.get_y_pred()
@@ -5024,7 +4764,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 81.71808761186999 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.37      0.73      0.49       623
@@ -5058,20 +4798,12 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.82     16984
        macro avg       0.83      0.79      0.80     16984
     weighted avg       0.83      0.82      0.82     16984
-    
-    
-
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_93_0.png)
-    
-
-
 
 ```python
 Lcat=xgboost.get_cat()
@@ -5245,11 +4977,9 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       : 2705,  : 0.0 % , bds et livres
       : 2585,  : 0.0 % , outillage et accesoires pour jardinage
     
-
+    
     E:\Manuel\PROJET\Bibli_DataScience_3.py:134: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
       for index, value in s.iteritems():
-    
-
 
 ```python
 ds.ajout_REPORT_40_PRED(y_orig, y_pred, xgboost.get_REPORT_MODELE(), xgboost.get_REPORT_LIBELLE(), xgboost.get_REPORT_ID())
@@ -5259,15 +4989,12 @@ print( xgboost.get_REPORT_LIBELLE())
 
     xgboost1
     XGBClassifier AVEC TDIDF
-    
-
 
 ```python
 
 ```
 
 # MultinomialNB
-
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -5277,13 +5004,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 NB = ml.ML_MultinomialNB("MultinomialNB")
@@ -5292,8 +5013,6 @@ NB = ml.ML_MultinomialNB("MultinomialNB")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 NB.fit_modele(savefics=True,Train="Load")
@@ -5301,8 +5020,6 @@ NB.fit_modele(savefics=True,Train="Load")
 
     F1 Score:  0.7869377756174585
     Accuracy:  0.7910386245878473
-    
-
 
 ```python
 print(NB.get_REPORT_ID())
@@ -5311,17 +5028,12 @@ print( NB.get_REPORT_LIBELLE())
 
     MULTINB1
     MultinomialNB AVEC TDIDF
-    
-
 
 ```python
 df_cross =NB.get_df_cross()
 df_pred = NB.get_df_pred()
 df_pred.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -5332,11 +5044,13 @@ df_pred.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5405,16 +5119,10 @@ df_pred.head()
 </table>
 </div>
 
-
-
-
 ```python
 df_prob = NB.get_df_prob()
 df_prob.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -5425,11 +5133,13 @@ df_prob.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5468,9 +5178,6 @@ df_prob.head()
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = NB.get_y_orig()
 y_pred = NB.get_y_pred()
@@ -5479,7 +5186,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 79.10386245878473 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.68      0.40      0.50       623
@@ -5513,20 +5220,12 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.79     16984
        macro avg       0.77      0.77      0.77     16984
     weighted avg       0.79      0.79      0.79     16984
-    
-    
-
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_105_0.png)
-    
-
-
 
 ```python
 Lcat=NB.get_cat()
@@ -5700,11 +5399,9 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       : 2585,  : 0.0 % , outillage et accesoires pour jardinage
       : 2583,  : 0.0 % , accesoires de piscine
     
-
+    
     E:\Manuel\PROJET\Bibli_DataScience_3.py:134: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
       for index, value in s.iteritems():
-    
-
 
 ```python
 ds.ajout_REPORT_40_PRED(y_orig, y_pred, NB.get_REPORT_MODELE(), NB.get_REPORT_LIBELLE(), NB.get_REPORT_ID())
@@ -5714,10 +5411,8 @@ print( NB.get_REPORT_LIBELLE())
 
     MULTINB1
     MultinomialNB AVEC TDIDF
-    
 
 # DecisionTreeClassifier
-
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -5727,13 +5422,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 DTCL = ml.ML_DecisionTreeClassifier("DecisionTreeClassifier")
@@ -5742,8 +5431,6 @@ DTCL = ml.ML_DecisionTreeClassifier("DecisionTreeClassifier")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 DTCL.fit_modele(savefics=True,Train="Load")
@@ -5751,8 +5438,6 @@ DTCL.fit_modele(savefics=True,Train="Load")
 
     F1 Score:  0.7276261246404976
     Accuracy:  0.7259773904851625
-    
-
 
 ```python
  max_depth=20
@@ -5760,21 +5445,17 @@ DTCL.fit_modele(savefics=True,Train="Load")
 Accuracy:  0.5252001884126236   
 ```
 
-
 ```python
  max_depth=40
  F1 Score:  0.6145868360252538
 Accuracy:  0.5950306170513424   
 ```
 
-
 ```python
  max_depth=50
 F1 Score:  0.6262212201696967
 Accuracy:  0.6082783796514366
-
 ```
-
 
 ```python
 print(DTCL.get_REPORT_ID())
@@ -5783,17 +5464,12 @@ print(DTCL.get_REPORT_LIBELLE())
 
     DTCL1
     DecisionTreeClassifier AVEC TDIDF
-    
-
 
 ```python
 df_cross =DTCL.get_df_cross()
 df_pred = DTCL.get_df_pred()
 df_pred.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -5804,11 +5480,13 @@ df_pred.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5877,16 +5555,10 @@ df_pred.head()
 </table>
 </div>
 
-
-
-
 ```python
 df_prob = DTCL.get_df_prob()
 df_prob.head(10)
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -5897,11 +5569,13 @@ df_prob.head(10)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5965,9 +5639,6 @@ df_prob.head(10)
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = DTCL.get_y_orig()
 y_pred = DTCL.get_y_pred()
@@ -5976,7 +5647,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 72.59773904851625 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.39      0.61      0.48       623
@@ -6010,9 +5681,6 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.73     16984
        macro avg       0.72      0.71      0.71     16984
     weighted avg       0.73      0.73      0.73     16984
-    
-    
-
 
 ```python
 print(y_orig[:5])
@@ -6026,19 +5694,12 @@ print(y_pred[:5])
     26805    2403
     Name: prdtypecode, dtype: int64
     [1301 1140 2583 2280 2403]
-    
-
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_120_0.png)
-    
-
-
 
 ```python
 Lcat=DTCL.get_cat()
@@ -6212,11 +5873,9 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       : 1940,  : 0.0 % , nouriture (cafes,infusions,conserves, epices,etc)
       : 2705,  : 0.0 % , bds et livres
     
-
+    
     E:\Manuel\PROJET\Bibli_DataScience_3.py:134: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
       for index, value in s.iteritems():
-    
-
 
 ```python
 ds.ajout_REPORT_40_PRED(y_orig, y_pred, DTCL.get_REPORT_MODELE(), DTCL.get_REPORT_LIBELLE(), DTCL.get_REPORT_ID())
@@ -6226,10 +5885,8 @@ print(DTCL.get_REPORT_LIBELLE())
 
     DTCL1
     DecisionTreeClassifier AVEC TDIDF
-    
 
-# LinearSVC FromModel 
-
+# LinearSVC FromModel
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -6239,13 +5896,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 lsvc = ml.ML_LinearSVCFromModel("LinearSVC")
@@ -6254,8 +5905,6 @@ lsvc = ml.ML_LinearSVCFromModel("LinearSVC")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 lsvc.fit_modele(savefics=True,Train="Save")
@@ -6265,8 +5914,6 @@ lsvc.fit_modele(savefics=True,Train="Save")
     L'heure à la fin de l'entraînement était :  2023-09-25 14:15:58.690214
     nom modele :  LinearSVC
     La durée de l'entraînement était :  0:00:10.344435
-    
-
 
 ```python
 print(lsvc.get_REPORT_ID())
@@ -6275,20 +5922,18 @@ print(lsvc.get_REPORT_LIBELLE())
 
     SVM2
     
-
-
+    
+    
     ---------------------------------------------------------------------------
-
+    
     AttributeError                            Traceback (most recent call last)
-
+    
     Cell In[56], line 2
           1 print(lsvc.get_REPORT_ID())
     ----> 2 print(lsvc.get_REPORT_LIBELLE())
     
-
+    
     AttributeError: 'ML_LinearSVC' object has no attribute 'get_REPORT_LIBELLE'
-
-
 
 ```python
 train_X_svc = ds.load_ndarray('LinearSVC_CONCAT2_X_train') 
@@ -6297,8 +5942,7 @@ train_y_svc = ds.load_ndarray('LinearSVC_CONCAT2_y_train')
 test_y_svc = ds.load_ndarray('LinearSVC_CONCAT2_y_test') 
 ```
 
-#  LinearSVC
-
+# LinearSVC
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -6308,13 +5952,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 linsvc = ml.ML_LinearSVC("LinearSVC")
@@ -6323,8 +5961,6 @@ linsvc = ml.ML_LinearSVC("LinearSVC")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 linsvc.fit_modele(savefics=True,Train="Save")
@@ -6336,8 +5972,6 @@ linsvc.fit_modele(savefics=True,Train="Save")
     F1 Score:  0.8308272614934256
     Accuracy:  0.8317828544512482
     La durée de l'entraînement était :  0:00:11.659353
-    
-
 
 ```python
 print(linsvc.get_REPORT_ID())
@@ -6346,16 +5980,11 @@ print( linsvc.get_REPORT_LIBELLE())
 
     SVM2
     LinearSVC AVEC TDIDF
-    
-
 
 ```python
 df_pred = linsvc.get_df_pred()
 df_pred.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -6366,11 +5995,13 @@ df_pred.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
+
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6439,9 +6070,6 @@ df_pred.head()
 </table>
 </div>
 
-
-
-
 ```python
 y_orig = linsvc.get_y_orig()
 y_pred = linsvc.get_y_pred()
@@ -6450,7 +6078,7 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
 
     Précision de la prédiction: 83.17828544512483 %
     Evaluation détaillée de la Classification par RDF :
-     
+    
                    precision    recall  f1-score   support
     
               10       0.57      0.60      0.59       623
@@ -6484,27 +6112,18 @@ _,_ = ds.get_classification_report(y_orig, y_pred)
         accuracy                           0.83     16984
        macro avg       0.82      0.81      0.82     16984
     weighted avg       0.83      0.83      0.83     16984
-    
-    
-
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
-
-    
 ![png](output_136_0.png)
-    
-
-
 
 ```python
 
 ```
 
 # Grid_RandomForest
-
 
 ```python
 import Bibli_DataScience_3 as ds
@@ -6517,14 +6136,11 @@ imp.reload(ml)
     C:\Users\shaky\AppData\Local\Temp\ipykernel_10536\3181455056.py:3: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
       import imp
     
-
-
-
-
+    
+    
+    
+    
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 Grid_forest = ml.ML_Grid_RandomForest("GridForestClassifier")
@@ -6533,8 +6149,6 @@ Grid_forest = ml.ML_Grid_RandomForest("GridForestClassifier")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 Grid_forest.fit_modele(savefics=True,Train="None")
@@ -6549,8 +6163,6 @@ Grid_forest.fit_modele(savefics=True,Train="None")
     F1 Score:  0.6986370015437644
     Accuracy:  0.7033089967027791
     La durée de l'entraînement était :  2:06:36.132399
-    
-
 
 ```python
 L'heure au début de l'entraînement était :  2023-09-23 13:37:02.872703
@@ -6566,7 +6178,6 @@ La durée de l'entraînement était :  2:06:36.132399
 
 # ML_Grid_MultinomialNB
 
-
 ```python
 import Bibli_DataScience_3 as ds
 import ML_DataScience as ml
@@ -6575,13 +6186,7 @@ imp.reload(ds)
 imp.reload(ml)
 ```
 
-
-
-
     <module 'ML_DataScience' from 'E:\\Manuel\\PROJET\\ML_DataScience.py'>
-
-
-
 
 ```python
 grid_NB = ml.ML_Grid_MultinomialNB("ML_Grid_MultinomialNB")
@@ -6590,8 +6195,6 @@ grid_NB = ml.ML_Grid_MultinomialNB("ML_Grid_MultinomialNB")
     [nltk_data] Downloading package punkt to
     [nltk_data]     C:\Users\shaky\AppData\Roaming\nltk_data...
     [nltk_data]   Package punkt is already up-to-date!
-    
-
 
 ```python
 grid_NB.fit_modele(savefics=True,Train="Load")
@@ -6606,4 +6209,3 @@ grid_NB.fit_modele(savefics=True,Train="Load")
     F1 Score:  0.7852134499816935
     Accuracy:  0.7892133772962788
     La durée de l'entraînement était :  0:03:01.250875
-    
