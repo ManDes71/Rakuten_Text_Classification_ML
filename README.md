@@ -1,61 +1,3 @@
-***Google Colab -> Cette cellule est à executer (1 fois) pour le cloner le dépot en local***
-
-
-```python
-!git clone https://github.com/ManDes71/Rakuten_Text_Classification_ML.git
-```
-
-    Cloning into 'Rakuten_Text_Classification_ML'...
-    remote: Enumerating objects: 315, done.[K
-    remote: Counting objects: 100% (107/107), done.[K
-    remote: Compressing objects: 100% (101/101), done.[K
-    remote: Total 315 (delta 55), reused 16 (delta 5), pack-reused 208[K
-    Receiving objects: 100% (315/315), 52.00 MiB | 7.32 MiB/s, done.
-    Resolving deltas: 100% (146/146), done.
-    Updating files: 100% (56/56), done.
-    Filtering content: 100% (5/5), 1.41 GiB | 43.60 MiB/s, done.
-    
-
-***Google Colab -> Cette cellule est à executer (2 fois) pour installer les bibliothèques nécessaires***  
-You must restart the runtime in order to use newly installed versions.  
-
-
-```python
-import sys
-sys.path.append('/content/Rakuten_Text_Classification_ML')
-import sys
-print(sys.version)
-
-!pip install -r /content/Rakuten_Text_Classification_ML/requirements.txt
-```
-
-    3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]
-    Requirement already satisfied: numpy==1.26.3 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 1)) (1.26.3)
-    Requirement already satisfied: pandas==1.5.3 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 2)) (1.5.3)
-    Requirement already satisfied: matplotlib==3.8.0 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (3.8.0)
-    Requirement already satisfied: scikit_learn==1.2.2 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 4)) (1.2.2)
-    Requirement already satisfied: joblib==1.2.0 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 5)) (1.2.0)
-    Requirement already satisfied: langdetect==1.0.9 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 6)) (1.0.9)
-    Requirement already satisfied: nltk==3.7 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (3.7)
-    Requirement already satisfied: xgboost==1.7.3 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 8)) (1.7.3)
-    Requirement already satisfied: wordcloud==1.9.2 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 9)) (1.9.2)
-    Requirement already satisfied: seaborn==0.12.2 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 10)) (0.12.2)
-    Requirement already satisfied: scipy==1.11 in /usr/local/lib/python3.10/dist-packages (from -r /content/Rakuten_Text_Classification_ML/requirements.txt (line 11)) (1.11.0)
-    Requirement already satisfied: python-dateutil>=2.8.1 in /usr/local/lib/python3.10/dist-packages (from pandas==1.5.3->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 2)) (2.8.2)
-    Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas==1.5.3->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 2)) (2023.3.post1)
-    Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (1.2.0)
-    Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (0.12.1)
-    Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (4.47.2)
-    Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (1.4.5)
-    Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (23.2)
-    Requirement already satisfied: pillow>=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (9.4.0)
-    Requirement already satisfied: pyparsing>=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib==3.8.0->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 3)) (3.1.1)
-    Requirement already satisfied: threadpoolctl>=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit_learn==1.2.2->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 4)) (3.2.0)
-    Requirement already satisfied: six in /usr/local/lib/python3.10/dist-packages (from langdetect==1.0.9->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 6)) (1.16.0)
-    Requirement already satisfied: click in /usr/local/lib/python3.10/dist-packages (from nltk==3.7->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (8.1.7)
-    Requirement already satisfied: regex>=2021.8.3 in /usr/local/lib/python3.10/dist-packages (from nltk==3.7->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (2023.6.3)
-    Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (from nltk==3.7->-r /content/Rakuten_Text_Classification_ML/requirements.txt (line 7)) (4.66.1)
-    
 
 # ***PROJET RAKUTEN***  
 # **1) Description du projet**  
@@ -65,53 +7,6 @@ Par exemple, dans le catalogue de Rakuten France, un produit avec une désignati
 parfois à une description supplémentaire. Ce produit est catégorisé sous le code de produit 50.
 
 
-```python
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-from sklearn.feature_extraction.text import CountVectorizer
-pd.set_option('display.max_colwidth', 150)
-```
-
-
-```python
-# lecture des données sources d'entrainement
-df_feats=pd.read_csv('/content/Rakuten_Text_Classification_ML/X_train_update.csv')
-
-# lecture des données cibles d'entrainement
-df_target=pd.read_csv('/content/Rakuten_Text_Classification_ML/Y_train_CVw08PX.csv')
-
-# création d'un dataframe globale -  jointure
-df=df_feats.merge(df_target,on='Unnamed: 0',how='inner')
-df.rename(columns={'Unnamed: 0': 'Id'}, inplace=True)
-```
-
-
-```python
-df.head()
-```
-
-
-
-
-
-  <div id="df-7b857ba5-d143-4c99-9fc0-21940cd22a1c" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -172,246 +67,6 @@ df.head()
     </tr>
   </tbody>
 </table>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-7b857ba5-d143-4c99-9fc0-21940cd22a1c')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-7b857ba5-d143-4c99-9fc0-21940cd22a1c button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-7b857ba5-d143-4c99-9fc0-21940cd22a1c');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-9f67380d-13cf-4564-a97d-47957606d340">
-  <button class="colab-df-quickchart" onclick="quickchart('df-9f67380d-13cf-4564-a97d-47957606d340')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-9f67380d-13cf-4564-a97d-47957606d340 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-
-
-
-
-
-```python
-import os
-import cv2
-import matplotlib.pyplot as plt
-
-folder_path = '/content/Rakuten_Text_Classification_ML/images/image_test'
-
-
-plt.figure(figsize=(10, 10))
-
-for i in range(2, 5):
-    filename = 'image_' + str(df.iloc[i, 4]) + "_product_" + str(df.iloc[i, 3]) + ".jpg"
-    designation = df.iloc[i, 1]
-    print("IMAGE ",i)
-    print(designation)
-    print(filename)
-    img = cv2.imread(os.path.join(folder_path, filename))
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convertir de BGR en RGB
-    plt.subplot(1, 3, i-1)
-    plt.imshow(img)
-    #
-    plt.axis('off')
-
-plt.show()
-
-```
 
     IMAGE  2
     Grand Stylet Ergonomique Bleu Gamepad Nintendo Wii U - Speedlink Pilot Style
@@ -426,7 +81,7 @@ plt.show()
 
 
     
-![png](output_8_1.png)
+![png](images/ReadMe/output_8_1.png)
     
 
 
@@ -485,26 +140,8 @@ fichiers.
 
 # ***exploration du dataset.***  
 ## Examinons la répartition  des codes produits :
-
-
-```python
-cat=df_target['prdtypecode'].unique()
-
-plt.figure(figsize=(14, 8))
-sns.countplot(data=df_target, x='prdtypecode', order = df_target['prdtypecode'].value_counts().index)
-plt.xticks(rotation=90)  # Rotation des labels de l'axe x pour une meilleure lisibilité
-plt.title("Distribution des prdtypecode")
-plt.xlabel("Code produit (prdtypecode)")
-plt.ylabel("Nombre d'occurrences")
-plt.show()
-
-print("il y a une grande disparité dans la répartition des classes !")
-
-```
-
-
     
-![png](output_12_0.png)
+![png](images/ReadMe/output_12_0.png)
     
 
 
@@ -512,16 +149,6 @@ print("il y a une grande disparité dans la répartition des classes !")
     
 
 # Proposition de nomenclature des classes ("prdtypecode")
-
-
-```python
-nomenclature=pd.read_csv('NOMENCLATURE.csv',header=0,encoding='utf-8',sep=';',index_col=0)
-catdict=nomenclature.to_dict()['definition']
-catdict
-```
-
-
-
 
     {10: 'livres',
      40: 'jeux video pour pc et consoles',
@@ -552,143 +179,16 @@ catdict
      2905: 'Jeu En téléchargement'}
 
 
-
-
-```python
-print("----df_feats info-------")
-print(df_feats.info())
-print("-"*50)
-print("Le champ description n'est pas toujours présent.")
-print("-"*50)
-# Calcul de la moyenne des longueurs pour chaque colonne séparément
-moyenne_designation = df_feats['designation'].str.len().mean()
-moyenne_description = df_feats['description'].str.len().mean()
-
-print("Moyenne de la longueur des designations:", moyenne_designation)
-print("Moyenne de la longueur des descriptions:", moyenne_description)
-
-```
-
-    ----df_feats info-------
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 84916 entries, 0 to 84915
-    Data columns (total 5 columns):
-     #   Column       Non-Null Count  Dtype 
-    ---  ------       --------------  ----- 
-     0   Unnamed: 0   84916 non-null  int64 
-     1   designation  84916 non-null  object
-     2   description  55116 non-null  object
-     3   productid    84916 non-null  int64 
-     4   imageid      84916 non-null  int64 
-    dtypes: int64(3), object(2)
-    memory usage: 3.2+ MB
-    None
-    --------------------------------------------------
-    Le champ description n'est pas toujours présent.
-    --------------------------------------------------
-    Moyenne de la longueur des designations: 70.16330255782185
-    Moyenne de la longueur des descriptions: 808.1716924305102
-    
-
-
-```python
-import matplotlib.pyplot as plt
-
-categories = ['Designation', 'Description']
-
-moyennes = [moyenne_designation, moyenne_description]
-
-plt.figure(figsize=(16, 6))
-
-plt.subplot(1, 2, 1)
-plt.bar(categories, moyennes, color=['blue', 'green'])
-plt.title('Moyenne des Longueurs des champs Designation et Description')
-plt.xlabel('Catégories')
-plt.ylabel('Moyenne des Longueurs')
-plt.xticks(categories)
-
-nb_designation = len(df_feats[~df_feats['designation'].isna()])
-nb_description = len(df_feats['description'].unique())  # Assurez-vous que c'est bien 'description'
-
-Nb = [nb_designation, nb_description]
-plt.subplot(1, 2, 2)
-plt.bar(categories, Nb, color=['red', 'yellow'])  # Choisir des couleurs différentes
-plt.title('Valeurs non nulles des champs Designation et Description')
-plt.xlabel('Catégories')
-plt.ylabel('Nombre de produits')
-plt.xticks(categories)
-
-plt.show()
-
-```
-
-
-    
-![png](output_16_0.png)
+![png](images/ReadMe/output_16_0.png)
     
 
 
 ## Examinons les valeurs nulles et les doublons du champ 'designation':
 
-
-```python
-categories = ['Non nulles', 'Uniques']
-nb_designation = len(df_feats[~df_feats['designation'].isna()])
-nb_designation_u = len(df_feats['designation'].unique())
-
-Nb = [nb_designation, nb_designation_u]
-
-plt.figure(figsize=(8, 6))  # Vous pouvez ajuster la taille selon vos besoins
-plt.bar(categories,Nb, color=['blue', 'green'])  # Choisir des couleurs
-
-plt.title('valeurs non nulles et unicité du champ  Designation')
-plt.xlabel('Désignation')
-plt.ylabel('Nombres de produits')
-plt.xticks(categories)
-
-plt.show()
-
-```
-
-
-    
-![png](output_18_0.png)
-    
-
-
-
-```python
-
-```
-
-
-```python
-
-```
+![png](images/ReadMe/output_18_0.png)
 
 ## Examinons les valeurs nulles et les doublons du champ 'description'.
-
-
-```python
-categories = ['Non nulles', 'Uniques']
-nb_description = len(df_feats[~df_feats['description'].isna()])
-nb_description_u = len(df_feats['description'].unique())
-
-Nb = [nb_description, nb_description_u]
-
-plt.figure(figsize=(8, 6))
-plt.bar(categories,Nb, color=['blue', 'green'])
-
-plt.title('valeurs non nulles et unicité du champ  Description')
-plt.xlabel('Description')
-plt.ylabel('Nombres de produits')
-plt.xticks(categories)
-
-plt.show()
-```
-
-
-    
-![png](output_22_0.png)
+ 
+![png](images/ReadMe/output_22_0.png)
     
 
