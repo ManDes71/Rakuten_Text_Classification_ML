@@ -140,24 +140,6 @@ fichiers.
 
 # ***exploration du dataset.***  
 ## Examinons la répartition  des codes produits :
-
-
-```python
-cat=df_target['prdtypecode'].unique()
-
-plt.figure(figsize=(14, 8))
-sns.countplot(data=df_target, x='prdtypecode', order = df_target['prdtypecode'].value_counts().index)
-plt.xticks(rotation=90)  # Rotation des labels de l'axe x pour une meilleure lisibilité
-plt.title("Distribution des prdtypecode")
-plt.xlabel("Code produit (prdtypecode)")
-plt.ylabel("Nombre d'occurrences")
-plt.show()
-
-print("il y a une grande disparité dans la répartition des classes !")
-
-```
-
-
     
 ![png](images/ReadMe/output_12_0.png)
     
