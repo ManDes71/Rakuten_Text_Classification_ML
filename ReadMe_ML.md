@@ -36,30 +36,6 @@ df=df_feats.merge(df_target,on='Unnamed: 0',how='inner')
 df.rename(columns={'Unnamed: 0': 'Id'}, inplace=True)
 ```
 
-
-```python
-df.head()
-```
-
-
-
-
-
-  <div id="df-7b857ba5-d143-4c99-9fc0-21940cd22a1c" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -120,7 +96,7 @@ df.head()
     </tr>
   </tbody>
 </table>
-</div>
+
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
