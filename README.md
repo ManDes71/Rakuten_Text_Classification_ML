@@ -178,6 +178,7 @@ fichiers.
      2705: 'bds et livres',
      2905: 'Jeu En téléchargement'}
 
+## Comparons les champs 'designation' et 'descriptions' :
 
 ![png](images/ReadMe/output_16_0.png)
     
