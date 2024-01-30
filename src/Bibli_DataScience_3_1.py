@@ -94,16 +94,16 @@ def load_dataframe(name_sav) :
     df = pd.read_csv(get_RACINE_DOSSIER() + name_sav)    
     return df
 def save_model(model,name_sav) :
-    print(get_RACINE_DOSSIER() + name_sav+'.h5')
-    model.save_weights(get_RACINE_DOSSIER() + name_sav+'.h5')
+    print(get_RACINE_SAUVEGARDE() + name_sav+'.h5')
+    model.save_weights(get_RACINE_SAUVEGARDE() + name_sav+'.h5')
 def load_model(model,name_sav) :
-    model.load_weights(get_RACINE_DOSSIER() + name_sav+'.h5')    
+    model.load_weights(get_RACINE_SAUVEGARDE() + name_sav+'.h5')    
     
     
 def joblib_dump(model,name_sav) :
-    dump(model,get_RACINE_DOSSIER() + name_sav+'.joblib')
+    dump(model,get_RACINE_SAUVEGARDE() + name_sav+'.joblib')
 def joblib_load(name_sav) :
-    return load(get_RACINE_DOSSIER() + name_sav+'.joblib')        
+    return load(get_RACINE_SAUVEGARDE() + name_sav+'.joblib')        
     
 def save_dataset(dataset,name_sav) :
     dataset.save(get_RACINE_SAUVEGARDE()+name_sav)  
