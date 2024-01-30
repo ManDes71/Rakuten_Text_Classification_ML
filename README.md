@@ -1901,10 +1901,23 @@ text_xgboost = Pipeline([
 xgboost= ml.ML_XGBClassifier("XGBClassifier")
 ```
 
+    [nltk_data] Downloading package punkt to /root/nltk_data...
+    [nltk_data]   Package punkt is already up-to-date!
+    
+
+    preprocessing ...
+    
+
 
 ```python
 xgboost.fit_modele(savefics=True,Train="Load")
 ```
+
+    L'heure au début de l'entraînement était :  2024-01-29 17:43:47.991567
+    L'heure à la fin de l'entraînement était :  2024-01-29 22:13:54.936336
+    F1 Score:  0.8223380676791777
+    Accuracy:  0.8178285445124823
+    
 
 
 ```python
@@ -1913,16 +1926,232 @@ y_pred = xgboost.get_y_pred()
 _,_ = ds.get_classification_report(y_orig, y_pred)
 ```
 
+    Précision de la prédiction: 81.78285445124823 %
+    Evaluation détaillée de la Classification par RDF :
+     
+                   precision    recall  f1-score   support
+    
+              10       0.37      0.74      0.50       623
+              40       0.78      0.62      0.69       502
+              50       0.76      0.78      0.77       336
+              60       0.95      0.81      0.88       166
+            1140       0.81      0.76      0.78       534
+            1160       0.91      0.90      0.91       791
+            1180       0.79      0.60      0.68       153
+            1280       0.75      0.75      0.75       974
+            1281       0.67      0.57      0.62       414
+            1300       0.95      0.94      0.95      1009
+            1301       0.94      0.88      0.91       161
+            1302       0.88      0.80      0.84       498
+            1320       0.84      0.77      0.80       648
+            1560       0.85      0.83      0.84      1015
+            1920       0.91      0.93      0.92       861
+            1940       0.89      0.81      0.85       161
+            2060       0.82      0.83      0.83       999
+            2220       0.83      0.74      0.78       165
+            2280       0.76      0.79      0.77       952
+            2403       0.77      0.74      0.75       955
+            2462       0.75      0.73      0.74       284
+            2522       0.91      0.90      0.91       998
+            2582       0.80      0.73      0.76       518
+            2583       0.96      0.97      0.97      2042
+            2585       0.82      0.75      0.78       499
+            2705       0.82      0.66      0.73       552
+            2905       1.00      0.99      1.00       174
+    
+        accuracy                           0.82     16984
+       macro avg       0.83      0.79      0.80     16984
+    weighted avg       0.83      0.82      0.82     16984
+    
+    
+
 
 ```python
 ds.show_confusion_matrix(y_orig, y_pred)
 ```
 
 
+    
+
+![png](images/ReadMe_ML_files/ReadMe_ML_90_0.png)
+    
+
+
+
 ```python
 df_cross =xgboost.get_df_cross()
+Lcat=xgboost.get_cat()
+catdict = xgboost.get_catdict()
 ds.Afficher_repartition(df_cross,Lcat,catdict)
 ```
+
+    10    ------    livres
+      : 10,  : 73.68 % , livres
+      : 2280,  : 9.15 % , magazines
+      : 2403,  : 5.78 % , livres et bds
+      : 2705,  : 4.98 % , bds et livres
+      : 40,  : 1.61 % , jeux video pour pc et consoles
+    40    ------    jeux video pour pc et consoles
+      : 40,  : 61.95 % , jeux video pour pc et consoles
+      : 10,  : 14.34 % , livres
+      : 50,  : 4.98 % ,  accesoires jeux video
+      : 2462,  : 3.78 % , consoles de jeux video et jeux videos
+      : 1280,  : 2.39 % , jouets, peluches, poupees
+    50    ------     accesoires jeux video
+      : 50,  : 77.98 % ,  accesoires jeux video
+      : 2462,  : 7.44 % , consoles de jeux video et jeux videos
+      : 40,  : 2.98 % , jeux video pour pc et consoles
+      : 10,  : 2.38 % , livres
+      : 1140,  : 2.38 % , produits derives “geeks” et figurines
+    60    ------    consoles de jeux video
+      : 60,  : 81.33 % , consoles de jeux video
+      : 50,  : 9.04 % ,  accesoires jeux video
+      : 2462,  : 5.42 % , consoles de jeux video et jeux videos
+      : 40,  : 1.81 % , jeux video pour pc et consoles
+      : 10,  : 0.6 % , livres
+    1140    ------    produits derives “geeks” et figurines
+      : 1140,  : 76.22 % , produits derives “geeks” et figurines
+      : 10,  : 4.68 % , livres
+      : 1280,  : 4.12 % , jouets, peluches, poupees
+      : 2280,  : 2.25 % , magazines
+      : 1180,  : 2.06 % , figurines collectionables pour jeux de societe
+    1160    ------    cartes collectionables
+      : 1160,  : 90.27 % , cartes collectionables
+      : 10,  : 5.06 % , livres
+      : 40,  : 1.39 % , jeux video pour pc et consoles
+      : 2280,  : 1.26 % , magazines
+      : 2403,  : 0.76 % , livres et bds
+    1180    ------    figurines collectionables pour jeux de societe
+      : 1180,  : 60.13 % , figurines collectionables pour jeux de societe
+      : 10,  : 13.73 % , livres
+      : 1140,  : 3.92 % , produits derives “geeks” et figurines
+      : 2403,  : 3.92 % , livres et bds
+      : 40,  : 3.27 % , jeux video pour pc et consoles
+    1280    ------    jouets, peluches, poupees
+      : 1280,  : 75.26 % , jouets, peluches, poupees
+      : 1281,  : 5.13 % , jeux de societe/cartes
+      : 1140,  : 4.93 % , produits derives “geeks” et figurines
+      : 10,  : 3.08 % , livres
+      : 1300,  : 1.64 % , Petites voitures (jouets) et maquettes
+    1281    ------    jeux de societe/cartes
+      : 1281,  : 57.0 % , jeux de societe/cartes
+      : 1280,  : 17.63 % , jouets, peluches, poupees
+      : 10,  : 6.28 % , livres
+      : 1160,  : 3.14 % , cartes collectionables
+      : 2403,  : 2.66 % , livres et bds
+    1300    ------    Petites voitures (jouets) et maquettes
+      : 1300,  : 94.05 % , Petites voitures (jouets) et maquettes
+      : 1280,  : 2.08 % , jouets, peluches, poupees
+      : 10,  : 1.78 % , livres
+      : 2403,  : 0.4 % , livres et bds
+      : 2583,  : 0.4 % , accesoires de piscine
+    1301    ------    accesoires pour petis enfants/bebes et mobilier de jeu (flechettes, billard, babyfoot)
+      : 1301,  : 88.2 % , accesoires pour petis enfants/bebes et mobilier de jeu (flechettes, billard, babyfoot)
+      : 10,  : 2.48 % , livres
+      : 2522,  : 1.86 % , produits de papeterie et rangement bureau
+      : 1280,  : 1.86 % , jouets, peluches, poupees
+      : 2583,  : 1.24 % , accesoires de piscine
+    1302    ------    jeux d'exterieur
+      : 1302,  : 79.92 % , jeux d'exterieur
+      : 1280,  : 5.42 % , jouets, peluches, poupees
+      : 10,  : 2.61 % , livres
+      : 1281,  : 2.61 % , jeux de societe/cartes
+      : 2583,  : 1.61 % , accesoires de piscine
+    1320    ------    sacs pour femmes et accesore petite enfance
+      : 1320,  : 76.7 % , sacs pour femmes et accesore petite enfance
+      : 10,  : 4.48 % , livres
+      : 1280,  : 3.55 % , jouets, peluches, poupees
+      : 2060,  : 2.93 % , lampes et accesoires decoration pour maison
+      : 1920,  : 2.62 % , linge de maison (cousins, rideaux, serviettes, nappes, draps)
+    1560    ------    Mobilier et produits decoration/rangement pour la maison
+      : 1560,  : 82.76 % , Mobilier et produits decoration/rangement pour la maison
+      : 2060,  : 4.63 % , lampes et accesoires decoration pour maison
+      : 2582,  : 3.25 % , mobilier d'exterieur et accesoires (parasols,pots,tentes,etc)
+      : 1920,  : 2.56 % , linge de maison (cousins, rideaux, serviettes, nappes, draps)
+      : 2585,  : 1.77 % , outillage et accesoires pour jardinage
+    1920    ------    linge de maison (cousins, rideaux, serviettes, nappes, draps)
+      : 1920,  : 93.38 % , linge de maison (cousins, rideaux, serviettes, nappes, draps)
+      : 1560,  : 2.21 % , Mobilier et produits decoration/rangement pour la maison
+      : 2060,  : 2.21 % , lampes et accesoires decoration pour maison
+      : 1320,  : 0.7 % , sacs pour femmes et accesore petite enfance
+      : 1280,  : 0.46 % , jouets, peluches, poupees
+    1940    ------    nouriture (cafes,infusions,conserves, epices,etc)
+      : 1940,  : 81.37 % , nouriture (cafes,infusions,conserves, epices,etc)
+      : 10,  : 6.83 % , livres
+      : 1280,  : 1.86 % , jouets, peluches, poupees
+      : 2403,  : 1.86 % , livres et bds
+      : 2705,  : 1.24 % , bds et livres
+    2060    ------    lampes et accesoires decoration pour maison
+      : 2060,  : 83.18 % , lampes et accesoires decoration pour maison
+      : 1560,  : 3.8 % , Mobilier et produits decoration/rangement pour la maison
+      : 1920,  : 2.4 % , linge de maison (cousins, rideaux, serviettes, nappes, draps)
+      : 2582,  : 1.8 % , mobilier d'exterieur et accesoires (parasols,pots,tentes,etc)
+      : 10,  : 1.4 % , livres
+    2220    ------    accesoires mascots/pets
+      : 2220,  : 73.94 % , accesoires mascots/pets
+      : 2522,  : 3.64 % , produits de papeterie et rangement bureau
+      : 1320,  : 3.64 % , sacs pour femmes et accesore petite enfance
+      : 2060,  : 3.03 % , lampes et accesoires decoration pour maison
+      : 1280,  : 2.42 % , jouets, peluches, poupees
+    2280    ------    magazines
+      : 2280,  : 79.31 % , magazines
+      : 10,  : 11.55 % , livres
+      : 2403,  : 5.15 % , livres et bds
+      : 1160,  : 1.05 % , cartes collectionables
+      : 2705,  : 1.05 % , bds et livres
+    2403    ------    livres et bds
+      : 2403,  : 73.82 % , livres et bds
+      : 10,  : 14.24 % , livres
+      : 2280,  : 7.54 % , magazines
+      : 2705,  : 1.05 % , bds et livres
+      : 1160,  : 0.84 % , cartes collectionables
+    2462    ------    consoles de jeux video et jeux videos
+      : 2462,  : 72.89 % , consoles de jeux video et jeux videos
+      : 50,  : 9.51 % ,  accesoires jeux video
+      : 40,  : 5.63 % , jeux video pour pc et consoles
+      : 10,  : 2.82 % , livres
+      : 2403,  : 2.11 % , livres et bds
+    2522    ------    produits de papeterie et rangement bureau
+      : 2522,  : 89.68 % , produits de papeterie et rangement bureau
+      : 10,  : 2.3 % , livres
+      : 2403,  : 1.6 % , livres et bds
+      : 1560,  : 1.3 % , Mobilier et produits decoration/rangement pour la maison
+      : 2280,  : 1.0 % , magazines
+    2582    ------    mobilier d'exterieur et accesoires (parasols,pots,tentes,etc)
+      : 2582,  : 72.78 % , mobilier d'exterieur et accesoires (parasols,pots,tentes,etc)
+      : 1560,  : 6.37 % , Mobilier et produits decoration/rangement pour la maison
+      : 2060,  : 5.79 % , lampes et accesoires decoration pour maison
+      : 2585,  : 4.05 % , outillage et accesoires pour jardinage
+      : 2583,  : 2.7 % , accesoires de piscine
+    2583    ------    accesoires de piscine
+      : 2583,  : 96.77 % , accesoires de piscine
+      : 10,  : 0.59 % , livres
+      : 2060,  : 0.39 % , lampes et accesoires decoration pour maison
+      : 2585,  : 0.34 % , outillage et accesoires pour jardinage
+      : 1302,  : 0.24 % , jeux d'exterieur
+    2585    ------    outillage et accesoires pour jardinage
+      : 2585,  : 75.35 % , outillage et accesoires pour jardinage
+      : 2583,  : 4.01 % , accesoires de piscine
+      : 1560,  : 3.81 % , Mobilier et produits decoration/rangement pour la maison
+      : 2582,  : 3.61 % , mobilier d'exterieur et accesoires (parasols,pots,tentes,etc)
+      : 2060,  : 3.01 % , lampes et accesoires decoration pour maison
+    2705    ------    bds et livres
+      : 2705,  : 65.76 % , bds et livres
+      : 10,  : 25.0 % , livres
+      : 2403,  : 3.44 % , livres et bds
+      : 2280,  : 2.72 % , magazines
+      : 1320,  : 0.72 % , sacs pour femmes et accesore petite enfance
+    2905    ------    Jeu En téléchargement
+      : 2905,  : 99.43 % , Jeu En téléchargement
+      : 1281,  : 0.57 % , jeux de societe/cartes
+      : 1920,  : 0.0 % , linge de maison (cousins, rideaux, serviettes, nappes, draps)
+      : 2705,  : 0.0 % , bds et livres
+      : 2585,  : 0.0 % , outillage et accesoires pour jardinage
+    
+
+    /content/Rakuten_Text_Classification_ML/Bibli_DataScience_3_1.py:170: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+      for index, value in s.iteritems():
+    
 
 ### ***MultinomialNB***
 la classe la classe **ML_MultinomialNB** utilise un pipeline :
