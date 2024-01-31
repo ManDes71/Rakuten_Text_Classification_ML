@@ -5,8 +5,7 @@ import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
-#from imblearn.under_sampling import RandomUnderSampler
-#from imblearn.over_sampling import RandomOverSampler
+
 from sklearn.preprocessing import LabelEncoder
 
 from nltk.tokenize import PunktSentenceTokenizer
@@ -40,8 +39,7 @@ from datetime import datetime
 
 
 
-#import tensorflow as tf
-#from tensorflow.keras.utils import to_categorical
+
 
 import Bibli_DataScience_3_1 as ds
 
@@ -168,9 +166,7 @@ class DS_ML(ds.DS_Model):
         r = re.compile(r"[a-zA-Z0-9âéè°]{2,}") 
         #dico ={}
         ListMots =[]
-        ## Etape 1:  Découper l'article en une liste de phrase
-        #article = sent_tokenize(article)
-        #sent = re.sub(liste_caracteres_speciaux, ' ', article)
+       
         sent = ' '.join(r.findall(article))
                 
         ## Etape 3: Découper chaque phrase en une liste de mots
@@ -195,8 +191,7 @@ class DS_ML(ds.DS_Model):
         
      def decomposition(self,article,langue):
         stop_words = self.get_stopwordFR().to_numpy()
-        #print(type(stop_words))
-        #print(stopwordFR[:1])
+        
         artikle = self.dictionarize(article,langue)
         artikle = [mot for mot in artikle if mot not in stop_words]
         
@@ -216,8 +211,7 @@ class DS_ML(ds.DS_Model):
             s = (partie_design + ' ' + partie_descrip) if len(partie_descrip) > 0 else partie_design
             DESCRIP.append(s)
         
-        #self.__df_feats['designation'] = pd.Series(DESCRIP)
-        #print(pd.Series(DESCRIP).values)
+        
         self.__df_feats.loc[:,'designation'] = pd.Series(DESCRIP)
         self.__df_feats.loc[:,'phrases'] = self.__df_feats.apply(lambda x : self.decomposition(str(x.designation),str(x.PAYS_LANGUE)),axis=1)
         df2=self.get_DF()
@@ -258,8 +252,7 @@ class DS_ML(ds.DS_Model):
         
         
 
-        #X_train = X_train_avant['designation'].apply(self.preprossessing_X)
-        #X_test = X_test_avant['designation'].apply(self.preprossessing_X)
+       
         
         X_train = X_train_avant['phrases'].apply(self.preprossessing_X)
         X_test = X_test_avant['phrases'].apply(self.preprossessing_X)
@@ -402,11 +395,11 @@ class ML_SVC(DS_ML):
           
          
          # Testez le modèle sur l'ensemble de test
-         #y_pred = text_clf.predict(X_test)
+        
          y_pred = ds.load_ndarray(self.__nom_modele+'_pred')
          print("y_prob")
          y_prob= ds.load_ndarray(self.__nom_modele+'_prob')
-         #y_prob = text_clf.predict_proba(X_test)
+        
          print("f1")
          #f1 = f1_score(y_test, y_pred, average='weighted')
          #print("F1 Score: ", f1)
@@ -491,25 +484,6 @@ class ML_LinearSVCFromModel(DS_ML):
         ds.save_ndarray(y_test,self.__nom_modele+'_CONCAT2_y_test')
         
         
-
-        # Testez le modèle sur l'ensemble de test
-        #y_pred = text_lsvm.predict(X_test)
-        #y_prob = text_lsvm.predict_proba(X_test)
-        
-        #f1 = f1_score(y_test, y_pred, average='weighted')
-        #print("F1 Score: ", f1)
-        #accuracy = text_lsvm.score(X_test, y_test)
-        #print("Accuracy: ", accuracy)
-
-        #self.set_y_orig(y_test)
-        #self.set_y_pred(y_pred)
-
-      
-        #df_pred = ds.get_def_prediction(y_test, y_pred,self.get_cat())
-        #self.set_df_pred(df_pred)
-        
-        #df_prob = self.Calculer_df_prob(y_pred,y_prob)
-        #self.set_df_prob(df_prob)
         
         duration = end_time - start_time
         print("La durée de l'entraînement était : ", duration)
@@ -698,8 +672,7 @@ class ML_RandomForest(DS_ML):
         
      def fit_modele(self,savefics=False,Train="None"):
       
-        #reg="[a-zA-Zé°]{2,}"
-        #stopwordFR = self.get_stopwordFR()
+        
         X_train,X_test,y_train,y_test = self.Train_Test_Split_(fic=Train)
         
        
@@ -708,8 +681,7 @@ class ML_RandomForest(DS_ML):
             ('clf', RandomForestClassifier(n_jobs=-1,random_state=321)),
             ])
         
-        #   DecisionTreeClassifier()     
-        #Meilleurs paramètres : {'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'min_samples_split': 5} 
+       
             
         start_time = datetime.now()
         print("L'heure au début de l'entraînement était : ", start_time)       
@@ -1040,7 +1012,7 @@ class ML_DecisionTreeClassifier(DS_ML):
             ('tfidf', TfidfVectorizer(lowercase=True,max_df=0.8, min_df=2)),
             ('clf', DecisionTreeClassifier(class_weight='balanced')),
             ])
-         #ecisionTreeClassifier(criterion ='entropy', max_depth=60, random_state=123)   
+         
             
          
         start_time = datetime.now()
@@ -1168,8 +1140,7 @@ class ML_Grid_MultinomialNB(DS_ML):
         
      def fit_modele(self,savefics=False,Train="Load"):
       
-        #reg="[a-zA-Zé°]{2,}"
-        #stopwordFR = self.get_stopwordFR()
+       
         X_train,X_test,y_train,y_test = self.Train_Test_Split_(fic=Train)
         
         param_grid_NB = {

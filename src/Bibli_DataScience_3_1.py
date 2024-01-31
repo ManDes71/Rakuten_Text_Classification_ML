@@ -6,33 +6,20 @@ import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
-#from imblearn.under_sampling import RandomUnderSampler
-#from imblearn.over_sampling import RandomOverSampler
-#from sklearn.preprocessing import LabelEncoder
 
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import itertools
 
 import pickle
 from joblib import dump,load
-#import tensorflow as tf
+
 import configparser
 from langdetect import detect_langs
 import json
-#from tensorflow.keras.preprocessing.text import tokenizer_from_json
 
-
-#def get_pickle_version():
-#    return configparser.__v
-
-
-
-#config.read('Rakuten_config_3.ini')  # dell
-#config.read('Rakuten_config_2.ini')  # shadow
 config = configparser.ConfigParser()
 config.read('/content/Rakuten_Text_Classification_ML/Rakuten_config_colab.ini')   # Colab
-#config.read('C:\\Users\\Shadow\\anaconda3\\envs\\tf\\PROJET\\Rakuten_config_2.ini')
-#config.read('Rakuten_config.ini')
+
 
 def get_RACINE_DOSSIER() :
     return config['DOSSIER']['RACINE_DOSSIER']
@@ -51,20 +38,7 @@ DATAFRAME_Y = get_RACINE_DOSSIER() + 'Y_train_CVw08PX.csv'
 DATAFRAME_LANGUE = get_RACINE_DOSSIER() + 'df_langue.csv'
 DATAFRAME_NOMENCLATURE = get_RACINE_DOSSIER() + 'NOMENCLATURE.csv'
 DATAFRAME_STOPWORDS = get_RACINE_DOSSIER() + 'stopwords_FR_02.csv'
-#    ***********    DEL    *****************
-#RACINE_DOSSIER = 'C:\\Users\\DESPLANCHES.DOMAMP\\Datascientest\\'
-#RACINE_IMAGES = 'C:\\Users\\DESPLANCHES.DOMAMP\\Datascientest\\images\\images\\'
-#RACINE_SAUVEGARDE = 'C:\\Users\\DESPLANCHES.DOMAMP\\Datascientest\\fichiers\\'
 
-#    ***********    SHADOW   *****************
-#RACINE_DOSSIER = 'C:\\Users\\Shadow\\anaconda3\\envs\\tf\\PROJET\\'
-#RACINE_IMAGES = 'C:\\Users\\Shadow\\anaconda3\\envs\\tf\\PROJET\\images\\'
-#RACINE_SAUVEGARDE = 'C:\\Users\\Shadow\\anaconda3\\envs\\tf\\PROJET\\fichiers\\'
-
-#    ***********    PC SIMON    *****************
-#RACINE_DOSSIER = 'E:\\Manuel\\PROJET\\'
-#RACINE_IMAGES = 'E:\\Manuel\\PROJET\\images\\'
-#RACINE_SAUVEGARDE = 'E:\\Manuel\\PROJET\\fichiers\\'
 
 print("section : ",config.sections())
 DOSSIER_IMAGES_TRAIN = get_RACINE_IMAGES() + 'image_train'
@@ -76,7 +50,6 @@ REPORT_40_PRED = get_RACINE_DOSSIER() + 'df_report_predict_40.csv'
 
 
 
-#from tensorflow.keras.utils import to_categorical
 
         
 
@@ -221,8 +194,7 @@ def ajout_REPORT_40_VALACC(val_acc,MODELE,LIBBELLE,ID):
         df_val_accuracy= pd.read_csv(REPORT_40_VALACC)
     
     df_val_accuracy2 = pd.DataFrame(list(val_acc)[:10],index=np.arange(1 , 11, 1),columns =['val_accuracy'])
-    #print(df_val_accuracy2.head())
-    #print('*******************')
+  
     df_val_accuracy2['modele']=MODELE.strip()
     df_val_accuracy2['libelle']=LIBBELLE.strip()
     df_val_accuracy2['id']= ID.strip()
@@ -235,7 +207,7 @@ def ajout_REPORT_40_VALACC(val_acc,MODELE,LIBBELLE,ID):
     else :
         df_val_accuracy=df_val_accuracy2.copy()
     
-    #print(df_val_accuracy.head())
+    
     df_val_accuracy.to_csv(REPORT_40_VALACC)    
     
 def ajout_REPORT_40_ACC(train_acc,MODELE,LIBBELLE,ID):
@@ -249,8 +221,7 @@ def ajout_REPORT_40_ACC(train_acc,MODELE,LIBBELLE,ID):
         df_val_accuracy= pd.read_csv(REPORT_40_ACC)
     
     df_val_accuracy2 = pd.DataFrame(list(train_acc)[:10],index=np.arange(1 , 11, 1),columns =['val_accuracy'])
-    #print(df_val_accuracy2.head())
-    #print('*******************')
+    
     df_val_accuracy2['modele']=MODELE
     df_val_accuracy2['libelle']=LIBBELLE
     df_val_accuracy2['id']=ID
@@ -319,15 +290,7 @@ class DS_Model:
         
      def __chargement_fichiers(self):
         
-        #config = configparser.ConfigParser()
-        #config.read('Rakuten_config_2.ini')   # Simon
-        #config.read('Rakuten_config_3.ini')  # dell
-        #config.read('Rakuten_config_2.ini')  # shadow
-        
-        #RACINE_DOSSIER = config['DOSSIER']['RACINE_DOSSIER']
-        #RACINE_IMAGES = config['DOSSIER']['RACINE_IMAGES']
-        #RACINE_SAUVEGARDE = config['DOSSIER']['RACINE_SAUVEGARDE']
-
+      
 
         df_feats=pd.read_csv(DATAFRAME_X)
         df_target=pd.read_csv(DATAFRAME_Y)
