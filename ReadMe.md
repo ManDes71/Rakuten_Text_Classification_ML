@@ -2683,8 +2683,7 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
     
 
 
-
-	| Modèle           | F1 Score   | Accuracy     |    Durée d'entrainement   |
+| Modèle           | F1 Score   | Accuracy     |    Durée d'entrainement   |
 	|---          	   |:-:         |:-:           | ---                       |  
 	|SVC		 	   |0.8294      |0.8256		 |3:21:42|	
 	|LogisticRegression|0.8018  |0.8022|0:10:00|
