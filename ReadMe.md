@@ -8,7 +8,7 @@
 2.   Élément de liste
 
 
-L'objectif de ce défi est la classification à grande échelle des données de produits multimodales (texte et image) en type de produit.  
+L'objectif de ce défi est la classification à grande échelle des données de produits multimodales (textes et images) en type de produit.  
 Par exemple, dans le catalogue de Rakuten France, un produit avec une désignation "Grand Stylet Ergonomique Bleu Gamepad Nintendo Wii U - Speedlink Pilot Style" associé à une image (image_938777978_product_201115110.jpg) et
 parfois à une description supplémentaire. Ce produit est catégorisé sous le code de produit 50.
 
