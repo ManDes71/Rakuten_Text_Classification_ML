@@ -2682,8 +2682,14 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       for index, value in s.iteritems():
     
 
+***Résultat***
 
 | Modèle 		| F1 Score | Accuracy 	| Durée d'entrainement |
 |---     		|:-:       |:-:       	| ---                  |  
 |SVC	 		|0.8294    |0.8256	|3:21:42|	
 |LogisticRegression	|0.8018    |0.8022	|0:10:00|
+|RandomForestClassifier	|0.7933	   |0.7926	|0:08:22|
+|XGBClassifier		|0.8223	   |0.8178	|4:30:17|
+|MultinomialNB		|0.7869	   |0.7910	|0:00:06|
+|DecisionTreeClassifier |0.7289	   |0.7268	|0:01:55|
+
