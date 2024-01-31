@@ -2682,7 +2682,7 @@ ds.Afficher_repartition(df_cross,Lcat,catdict)
       for index, value in s.iteritems():
     
 
-***Résultat***
+***Résultats***
 
 | Modèle 		| F1 Score | Accuracy 	| Durée d'entrainement |
 |---     		|:-:       |:-:       	| ---                  |  
