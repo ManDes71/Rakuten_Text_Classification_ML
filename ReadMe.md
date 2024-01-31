@@ -143,7 +143,7 @@ plt.show()
 
 
 Ce notebook fait partie d'un ensemble de sous-projets dont le resultat représente le **projet Rakuten** que j'ai réalisé pour mon diplôme de data Scientist chez Datascientest.com.  
-Ce projet consiste en la classification à grande échelle des données de         produits multimodales (texte et image) en type de produits.  
+Ce projet consiste en la classification à grande échelle des données de         produits multimodales (textes et images) en type de produits.  
 Ce repositery est la partie **Machine Learning** et ne traite que de la partie texte.   
 Il utilise néanmoins la bibliothèque **Bibli_DataScience** commune à l'ensemble du projet.  
 D'autres dépots viendront, à savoir  :
@@ -173,10 +173,10 @@ Les fichiers de données sont distribués ainsi :
 ***X_test_update.csv*** : fichier d'entrée de test  
 Un fichier images.zip est également fourni, contenant toutes les images.  
 La décompression de ce fichier fournira un dossier nommé "images" avec deux sous-dossiers nommés ***"image_train"*** et ***"image_test"***, contenant respectivement les images d'entraînement et de test.  
-Pour notre part, ne participant pas au challenge Rakuten, je n'ai pas pas accès au fichier de sortie de test.  
+Pour ma part, ne participant pas au challenge Rakuten, je n'ai pas pas accès au fichier de sortie de test.  
 Le fichier d’entrée de test est donc inutilisable.  
 **X_train_update.csv** : fichier d'entrée d'entraînement :  
-La première ligne des fichiers d'entrée contient l'en-tête et les colonnes sont séparées par des virgules (",").  
+La première ligne du fichier d'entrée contient l'en-tête et les colonnes sont séparées par des virgules (",").  
 Les colonnes sont les suivantes :  
 
 
@@ -196,7 +196,7 @@ Les colonnes sont les suivantes :
 code de type de produit correspondant.
 *  **prdtypecode** – Catégorie dans laquelle le produit est classé.
 
-La liaison entre les fichiers se fait par une jointure sur l’identifiant entier présent les deux
+La liaison entre les fichiers se fait par une jointure sur l’identifiant entier présent sur les deux
 fichiers.
 
 ## ***3) exploration du dataset.***  
