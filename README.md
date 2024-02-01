@@ -8,8 +8,8 @@
 2.   Élément de liste
 
 
-L'objectif de ce défi est la classification à grande échelle des données de produits multimodales (texte et image) en type de produit.  
-Par exemple, dans le catalogue de Rakuten France, un produit avec une désignation "Grand Stylet Ergonomique Bleu Gamepad Nintendo Wii U - Speedlink Pilot Style" associé à une image (image_938777978_product_201115110.jpg) et
+L'objectif de ce défi est la classification à grande échelle des données de produits multimodales (textes et images) en type de produit.  
+Par exemple, dans le catalogue de Rakuten France, un produit avec une désignation "Grand Stylet Ergonomique Bleu Gamepad Nintendo Wii U - Speedlink Pilot Style" est associé à une image (image_938777978_product_201115110.jpg) et
 parfois à une description supplémentaire. Ce produit est catégorisé sous le code de produit 50.
 
 
@@ -143,7 +143,7 @@ plt.show()
 
 
 Ce notebook fait partie d'un ensemble de sous-projets dont le resultat représente le **projet Rakuten** que j'ai réalisé pour mon diplôme de data Scientist chez Datascientest.com.  
-Ce projet consiste en la classification à grande échelle des données de         produits multimodales (texte et image) en type de produits.  
+Ce projet consiste en la classification à grande échelle des données de         produits multimodales (textes et images) en type de produits.  
 Ce repositery est la partie **Machine Learning** et ne traite que de la partie texte.   
 Il utilise néanmoins la bibliothèque **Bibli_DataScience** commune à l'ensemble du projet.  
 D'autres dépots viendront, à savoir  :
@@ -193,10 +193,10 @@ image_imageid_product_productid.jpg ex : image_1263597046_product_3804725264.jpg
 La première ligne des fichiers d'entrée contient l'en-tête et les colonnes sont séparées par des virgules (",").  
 Les colonnes sont les suivantes :  
 *  **Un identifiant entier pour le produit**. Cet identifiant est utilisé pour associer le produit à son
-code de type de produit correspondant.
+code de produit correspondant.
 *  **prdtypecode** – Catégorie dans laquelle le produit est classé.
 
-La liaison entre les fichiers se fait par une jointure sur l’identifiant entier présent les deux
+La liaison entre les fichiers se fait par une jointure sur l’identifiant entier présent sur les deux
 fichiers.
 
 ## ***3) exploration du dataset.***  
