@@ -6,7 +6,7 @@
 
 L'objectif de ce défi est la classification à grande échelle des données de produits multimodales (textes et images) en type de produits.  
 Par exemple, dans le catalogue de Rakuten France, **un produit** avec une désignation "Grand Stylet Ergonomique Bleu Gamepad Nintendo Wii U - Speedlink Pilot Style" **est associé à une image** (image_938777978_product_201115110.jpg) **et
-à une description supplémentaire.** Ce produit est catégorisé sous le code de produit 50.
+à une description supplémentaire.** Ce produit est catégorisé sous **le code** produit 50.
 
 
 ```python
