@@ -183,7 +183,7 @@ Les colonnes sont les suivantes :
 *   **imageid** - Un identifiant unique pour l'image associée au produit.
 Les champs imageid et productid sont utilisés pour récupérer les images dans le dossier
 d'images correspondant. Pour un produit donné, le nom du fichier image est :
-image_imageid_product_productid.jpg ex : image_1263597046_product_3804725264.jpg  
+image_imageid_product_productid.jpg ex : **image_1263597046_product_3804725264.jpg**  
 
 **Y_train_CVw08PX.csv** : fichier de sortie d'entraînement :  
 La première ligne des fichiers d'entrée contient l'en-tête et les colonnes sont séparées par des virgules (",").  
