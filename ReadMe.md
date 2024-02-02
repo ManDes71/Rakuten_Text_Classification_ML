@@ -161,7 +161,7 @@ défi propose de modéliser un classificateur pour classer les produits dans leu
 
 **description des fichiers**
 
-le but du projet est de prédire le code de type de chaque produit tel que défini dans le catalogue de Rakuten France.  
+le but du projet est de prédire le code de chaque produit tel que défini dans le catalogue de Rakuten France.  
 La catégorisation des annonces de produits se fait par le biais de la désignation, de la description (quand elle est présente) et des images.  
 Les fichiers de données sont distribués ainsi :  
 ***X_train_update.csv*** : fichier d'entrée d'entraînement  
@@ -176,7 +176,7 @@ La première ligne du fichier d'entrée contient l'en-tête et les colonnes sont
 Les colonnes sont les suivantes :  
 
 
-*   **Un identifiant entier pour le produit**. Cet identifiant est utilisé pour associer le produit à son code de type de produit correspondant.
+*   **Un identifiant entier pour le produit**. Cet identifiant est utilisé pour associer le produit à son code de produit correspondant.
 *   **Désignation** - Le titre du produit, un court texte résumant le produit
 *   **Description** - Un texte plus détaillé décrivant le produit. Tous les marchands n'utilisent pas ce champ, il se peut donc que le champ de description contienne la valeur NaN pour de nombreux produits, afin de conserver l'originalité des données.
 *   **productid** - Un identifiant unique pour le produit.
