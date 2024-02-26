@@ -38,9 +38,6 @@ import re
 from datetime import datetime
 
 
-
-
-
 import Bibli_DataScience_3_1 as ds
 
 
@@ -214,8 +211,6 @@ class DS_ML(ds.DS_Model):
         
         self.__df_feats.loc[:,'designation'] = pd.Series(DESCRIP)
         self.__df_feats.loc[:,'phrases'] = self.__df_feats.apply(lambda x : self.decomposition(str(x.designation),str(x.PAYS_LANGUE)),axis=1)
-        df2=self.get_DF()
-        df2['phrases'] = self.__df_feats['phrases']
      
      def traiter_phrases(self,design,descrip):
         DESCRIP = []
@@ -249,10 +244,6 @@ class DS_ML(ds.DS_Model):
             return X_train, X_test, y_train_avant, y_test_avant
         
         X_train_avant, X_test_avant, y_train_avant, y_test_avant = super().Train_Test_Split_(train_size, random_state)
-        
-        
-
-       
         
         X_train = X_train_avant['phrases'].apply(self.preprossessing_X)
         X_test = X_test_avant['phrases'].apply(self.preprossessing_X)
