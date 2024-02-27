@@ -164,7 +164,7 @@ défi propose de modéliser un classificateur pour classer les produits dans leu
 le but du projet est de prédire le code de chaque produit tel que défini dans le catalogue de Rakuten France.  
 La catégorisation des annonces de produits se fait par le biais de la désignation, de la description (quand elle est présente) et des images.  
 Les fichiers de données sont distribués ainsi :  
-***X_train_update.csv*** : fichier d'entrée d'entraînement  
+***X_train_update.csv*** : fichier d'entrée d'entraînement (84916 produits)    
 ***Y_train_CVw08PX.csv*** : fichier de sortie d'entraînement  
 ***X_test_update.csv*** : fichier d'entrée de test  
 Un fichier images.zip est également fourni, contenant toutes les images.  
