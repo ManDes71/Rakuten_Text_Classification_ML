@@ -426,8 +426,8 @@ class ML_SVC(DS_ML):
 # ************************************************************************************************  
 class ML_LinearSVCFromModel(DS_ML):     
 
-     def __init__(self, nom_modele):
-        super().__init__(nom_modele)
+     def __init__(self, nom_modele,process=True):
+        super().__init__(nom_modele,process=process)
             
         self.__nom_modele = nom_modele
         
