@@ -247,9 +247,6 @@ class DS_ML(ds.DS_Model):
             y_test_avant = ds.load_ndarray('y_test')
             
             return X_train, X_test, y_train_avant, y_test_avant
-
-        print("self.__df")    
-        print(self.__df.info()) 
          
         X_train_avant, X_test_avant, y_train_avant, y_test_avant = super().Train_Test_Split_(train_size, random_state)
         
