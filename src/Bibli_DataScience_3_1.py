@@ -392,8 +392,8 @@ class DS_Model:
      def Train_Test_Split_(self,train_size=0.8, random_state=1234): 
                            
         X = self.__df.drop('prdtypecode', axis=1)
-        y = self.__df['prdtypecode']                   
-    
+        y = self.__df['prdtypecode']            
+         print(X.info())    
         X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=train_size,
                                     random_state=random_state, stratify=y,shuffle=True)
                                     
