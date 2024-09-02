@@ -213,7 +213,7 @@ class DS_ML(ds.DS_Model):
         
         
         self.__df_feats.loc[:,'designation'] = pd.Series(DESCRIP)
-        self.__df_feats.loc[:,'phrases'] = self.__df_feats.apply(lambda x : self.decomposition(str(x.designation),str(x.PAYS_LANGUE)),axis=1)
+        self.__df_feats.loc[:,'phrases'] = self.__df_feats.apply(lambda x : self.decomposition(str(x.designation),str(x.PAYS_LANGUE)),axis=1) 
      
      def traiter_phrases(self,design,descrip):
         DESCRIP = []
@@ -245,7 +245,10 @@ class DS_ML(ds.DS_Model):
             y_test_avant = ds.load_ndarray('y_test')
             
             return X_train, X_test, y_train_avant, y_test_avant
-        
+
+        print("self.__df")    
+        print(self.__df.info()) 
+         
         X_train_avant, X_test_avant, y_train_avant, y_test_avant = super().Train_Test_Split_(train_size, random_state)
         
         X_train = X_train_avant['phrases'].apply(self.preprossessing_X)
