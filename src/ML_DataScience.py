@@ -214,7 +214,8 @@ class DS_ML(ds.DS_Model):
         
         self.__df_feats.loc[:,'designation'] = pd.Series(DESCRIP)
         self.__df_feats.loc[:,'phrases'] = self.__df_feats.apply(lambda x : self.decomposition(str(x.designation),str(x.PAYS_LANGUE)),axis=1) 
-        self.__df['phrases'] = self.__df_feats['phrases'] 
+        df2=self.get_DF()
+        df2['phrases'] = self.__df_feats['phrases']
      
      def traiter_phrases(self,design,descrip):
         DESCRIP = []
