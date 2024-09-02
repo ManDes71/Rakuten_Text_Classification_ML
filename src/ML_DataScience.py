@@ -73,6 +73,7 @@ class DS_ML(ds.DS_Model):
             print("preprocessing ...")
             self.traiter_dataframes()
 
+        print("self.__df_feats")    
         print(self.__df_feats.info()) 
       
      def get_df_feats(self):
